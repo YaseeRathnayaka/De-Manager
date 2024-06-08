@@ -1,12 +1,15 @@
 const express = require('express')
 const mongoose = require('mongoose')
+const users = require('./routes/users')
 
 const app = express();
 app.use(express.json())
 
+app.use('/users', users)
+
 // export NODE_ENV=development
 if (app.get('env') === 'development') {
-    mongoose.connect('mongodb://localhost:27017/Sevice-Station')
+    mongoose.connect('mongodb://localhost:27017/Service-Station')
         .then(() => console.log('MongoDB Compass Connected'))
         .catch((err) => console.log('MongoDB Compass connection error:', err))
 }else{
