@@ -3,6 +3,7 @@ const router = express.Router()
 const auth = require('../middleware/auth')
 const { Appointment, validate } = require('../models/serviceAppointment')
 
+// create an appointment
 router.post('/', auth, async (req, res) => {
     const { error } = validate(req.body)
     if (error) return res.status(400).send(error.details[0].message)
@@ -25,6 +26,7 @@ router.post('/', auth, async (req, res) => {
     }
 })
 
+// get all appointment
 router.get('/all', auth, async (req, res) => {
     try {
         const appointments = await Appointment.find({ user: req.user._id }).select('-user -_id')
@@ -34,6 +36,17 @@ router.get('/all', auth, async (req, res) => {
     }
 })
 
+// get an appointment
+router.get('/:id', auth, async (req, res) => {
+    try {
+        const appointment = await Appointment.find({ _id: req.params.id }).select('-user -_id')
+        res.send(appointment)
+    } catch (error) {
+        res.status(500).send('Error fetching appointments.')
+    }
+})
+
+// update an appointment
 router.put('/:id', auth, async (req, res) => {
     const { error } = validate(req.body)
     if (error) return res.status(400).send(error.details[0].message)
@@ -61,6 +74,7 @@ router.put('/:id', auth, async (req, res) => {
 
 })
 
+// delete an appointment
 router.delete('/:id', auth, async (req, res) => {
     try {
         const appointment = await Appointment.findByIdAndDelete(req.params.id);
