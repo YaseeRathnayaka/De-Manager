@@ -22,8 +22,15 @@ router.post('/', auth, async (req, res) => {
     } catch (error) {
         res.status(500).send('An error occurred while processing your request.')
     }
+})
 
-
+router.get('/all', auth, async(req, res) => {
+    try {
+        const appointments = await Appointment.find({user: req.user._id}).select('-user -_id')
+        res.send(appointments)
+    } catch (error) {
+        res.status(500).send('Error fetching appointments.')
+    }
 })
 
 module.exports = router
