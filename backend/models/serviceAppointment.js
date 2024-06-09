@@ -1,6 +1,17 @@
 const mongoose = require('mongoose')
 const Joi = require('joi')
-Joi.objectId = require('joi-objectid')(Joi);
+
+const taskSchema = new mongoose.Schema({
+    name: {
+        type: String,
+        required: true,
+        trim: true
+    },
+    completed: {
+        type: Boolean,
+        default: false
+    }
+});
 
 const serviceAppointmentSchema = new mongoose.Schema({
     user: {
@@ -17,6 +28,10 @@ const serviceAppointmentSchema = new mongoose.Schema({
         type: String,
         required: true,
         trim: true,
+    },
+    tasks: {
+        type: [taskSchema],
+        required: true,
     },
     appointmentDate: {
         type: Date,
@@ -35,15 +50,21 @@ const serviceAppointmentSchema = new mongoose.Schema({
     },
     status: {
         type: String,
-        enum: ['Pending', 'Confirmed', 'Cancelled'],
+        enum: ['Pending', 'Completed', 'Cancelled'],
         default: 'Pending'
     }
 })
 
 function validateServiceAppointment(appointment) {
+    const taskSchema = Joi.object({
+        name: Joi.string().required(),
+        completed: Joi.boolean().default(false)
+    });
+    
     const schema = Joi.object({
         vehicle: Joi.string().required(),
         serviceType: Joi.string().required(),
+        tasks: Joi.array().items(taskSchema).required(),
         appointmentDate: Joi.date().required(),
         appointmentTime: Joi.string().pattern(/^([0-1]\d|2[0-3]):([0-5]\d)$/).required(),
         status: Joi.string().valid('Pending', 'Confirmed', 'Cancelled').default('Pending')

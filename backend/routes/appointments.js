@@ -11,6 +11,7 @@ router.post('/', auth, async (req, res) => {
         user: req.user._id,
         vehicle: req.body.vehicle,
         serviceType: req.body.serviceType,
+        tasks: req.body.tasks,
         appointmentDate: req.body.appointmentDate,
         appointmentTime: req.body.appointmentTime,
         status: req.body.status
@@ -44,6 +45,7 @@ router.put('/:id', auth, async (req, res) => {
                 user: req.user._id,
                 vehicle: req.body.vehicle,
                 serviceType: req.body.serviceType,
+                tasks: req.body.tasks,
                 appointmentDate: req.body.appointmentDate,
                 appointmentTime: req.body.appointmentTime,
                 status: req.body.status
@@ -58,5 +60,17 @@ router.put('/:id', auth, async (req, res) => {
     }
 
 })
+
+router.delete('/:id', auth, async (req, res) => {
+    try {
+        const appointment = await Appointment.findByIdAndDelete(req.params.id);
+
+        if (!appointment) return res.status(404).send('The appointment with the given ID was not found.');
+        res.send(appointment);
+    } catch (error) {
+        res.status(500).send('An error occurred while deleting the appointment.');
+        console.log(error)
+    }
+});
 
 module.exports = router
