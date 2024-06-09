@@ -3,6 +3,7 @@ const mongoose = require('mongoose')
 const users = require('./routes/users')
 const auth = require('./routes/login')
 const cors = require('cors')
+const appointment = require('./routes/appointments')
 
 const app = express();
 app.use(cors())
@@ -10,6 +11,7 @@ app.use(express.json())
 
 app.use('/users', users)
 app.use('/auth', auth)
+app.use('/appointment', appointment)
 
 // export NODE_ENV=development
 if (app.get('env') === 'development') {
