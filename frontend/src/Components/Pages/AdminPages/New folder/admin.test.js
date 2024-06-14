@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import Admin from './admin'; // Adjust the path if necessary
+import Admin from './Admin.jsx'; // Adjust the path if necessary
 
 test('renders hello text', () => {
   render(<Admin />);
