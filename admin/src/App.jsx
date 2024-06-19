@@ -1,12 +1,21 @@
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Home from './Components/Pages/Home/Home';
+import Schedule from './Components/Pages/Schedule/Schedule'
+import CalenderView from './Components/Pages/CalenderView/CalenderView'
 
-
-const App = () => {
+function App() {
   return (
-    <div>
-     
-      <p className='text-2xl bg-slate-400'>this is the app</p>
-    </div>
-  )
+    <Router>
+      <div className="App">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/schedule" element={<Schedule />} />
+          <Route path="/calender" element={<CalenderView />} />
+        </Routes>
+      </div>
+    </Router>
+  );
 }
 
-export default App
+export default App;
