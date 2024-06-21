@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
   Card,
   Typography,
@@ -23,21 +23,30 @@ import {
 import { ChevronRightIcon, ChevronDownIcon } from "@heroicons/react/24/outline";
 
 const SideNavBar = () => {
-  const [open, setOpen] = React.useState(0);
-  const [analyticsSwitch, setAnalyticsSwitch] = React.useState(false);
-  const [appointmentsSwitch, setAppointmentsSwitch] = React.useState(false);
-  const [detailsSwitch, setDetailsSwitch] = React.useState(false);
+  const [open, setOpen] = useState(0);
+  const [analyticsSwitch, setAnalyticsSwitch] = useState(false);
+  const [appointmentsSwitch, setAppointmentsSwitch] = useState(false);
+  const [detailsSwitch, setDetailsSwitch] = useState(false);
+  const [currentDateTime, setCurrentDateTime] = useState(new Date());
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentDateTime(new Date());
+    }, 1000);
+    return () => clearInterval(timer);
+  }, []);
 
   const handleOpen = (value) => {
     setOpen(open === value ? 0 : value);
   };
 
   return (
-    <Card className="h-[calc(100vh-2rem)] w-full max-w-[20rem] p-4 shadow-xl shadow-blue-gray-900/5 bg-violet-300 rounded-xl mt-3 ml-2">
+    <Card className="h-[calc(100vh-2rem)] w-full max-w-[20rem] p-4 shadow-xl shadow-blue-gray-900/5 bg-custom-blue mt-3 ml-3 rounded-xl">
       <div className="p-4 mb-2">
         <Typography variant="h5" color="blue-gray">
-          Sidebar
+         De - Manager
         </Typography>
+        
       </div>
       <List>
         <Accordion
@@ -136,7 +145,7 @@ const SideNavBar = () => {
                 <ShoppingBagIcon className="w-5 h-5" />
               </ListItemPrefix>
               <Typography color="blue-gray" className="mr-auto font-normal">
-               Scheduled Events
+                E-Commerce
               </Typography>
             </AccordionHeader>
           </ListItem>
@@ -147,13 +156,13 @@ const SideNavBar = () => {
                   <ListItemPrefix>
                     <ChevronRightIcon strokeWidth={3} className="w-5 h-3" />
                   </ListItemPrefix>
-                  Calender View
+                  Orders
                 </ListItem>
                 <ListItem>
                   <ListItemPrefix>
                     <ChevronRightIcon strokeWidth={3} className="w-5 h-3" />
                   </ListItemPrefix>
-                  List View
+                  Products
                 </ListItem>
               </List>
             </AccordionBody>
@@ -194,6 +203,9 @@ const SideNavBar = () => {
           Log Out
         </ListItem>
       </List>
+      <Typography variant="body2" color="blue-gray" className="mt-auto">
+          {currentDateTime.toLocaleString()}
+        </Typography>
     </Card>
   );
 };
