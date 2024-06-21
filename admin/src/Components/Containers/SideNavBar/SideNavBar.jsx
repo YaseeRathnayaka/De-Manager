@@ -145,7 +145,7 @@ const SideNavBar = () => {
                 <ShoppingBagIcon className="w-5 h-5" />
               </ListItemPrefix>
               <Typography color="blue-gray" className="mr-auto font-normal">
-                E-Commerce
+                Scheduled Events
               </Typography>
             </AccordionHeader>
           </ListItem>
@@ -156,13 +156,13 @@ const SideNavBar = () => {
                   <ListItemPrefix>
                     <ChevronRightIcon strokeWidth={3} className="w-5 h-3" />
                   </ListItemPrefix>
-                  Orders
+                  List View
                 </ListItem>
                 <ListItem>
                   <ListItemPrefix>
                     <ChevronRightIcon strokeWidth={3} className="w-5 h-3" />
                   </ListItemPrefix>
-                  Products
+                  Calender View
                 </ListItem>
               </List>
             </AccordionBody>
