@@ -3,7 +3,7 @@ import { FaBell } from 'react-icons/fa'; // Example: using the FaBell icon from 
 
 const HeaderBar = () => {
   return (
-    <div className='flex items-center w-3/4 h-12 mt-3 ml-2 text-black bg-custom-gray rounded-xl'>
+    <div className='flex items-center w-11/12 h-12 mt-3 ml-2 text-black bg-custom-gray rounded-xl'>
       <div className=' pl-14'>
         Dashboard
       </div>
