@@ -9,11 +9,7 @@ const Home = () => {
       <SideNavBar />
       <div className="flex flex-col flex-1">
         <HeaderBar />
-        <div className="flex justify-around mt-4">
-          <TopCards />
-          <TopCards />
-          <TopCards />
-        </div>
+        <TopCards />
       </div>
     </div>
   );
