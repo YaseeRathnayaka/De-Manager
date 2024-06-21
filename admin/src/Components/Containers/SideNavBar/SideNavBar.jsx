@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   Card,
   Typography,
@@ -29,6 +30,12 @@ const SideNavBar = () => {
   const [detailsSwitch, setDetailsSwitch] = useState(false);
   const [currentDateTime, setCurrentDateTime] = useState(new Date());
 
+  const navigate = useNavigate();
+  
+  const CalendarNav = () => {
+    navigate('/calendar');
+  };
+  
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentDateTime(new Date());
@@ -39,6 +46,8 @@ const SideNavBar = () => {
   const handleOpen = (value) => {
     setOpen(open === value ? 0 : value);
   };
+
+  
 
   return (
     <Card className="h-[calc(100vh-2rem)] w-full max-w-[20rem] p-4 shadow-xl shadow-blue-gray-900/5 bg-custom-blue mt-3 ml-3 rounded-xl">
@@ -158,7 +167,7 @@ const SideNavBar = () => {
                   </ListItemPrefix>
                   List View
                 </ListItem>
-                <ListItem>
+                <ListItem onClick={CalendarNav}>
                   <ListItemPrefix>
                     <ChevronRightIcon strokeWidth={3} className="w-5 h-3" />
                   </ListItemPrefix>
