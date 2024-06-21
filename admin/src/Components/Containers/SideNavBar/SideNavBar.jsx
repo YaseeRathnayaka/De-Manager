@@ -35,6 +35,13 @@ const SideNavBar = () => {
   const CalendarNav = () => {
     navigate('/calendar');
   };
+  const DashboardNav = () => {
+    navigate('/dashboard');
+  };
+  
+  const ListViewNav = () => {
+    navigate('/listview');
+  };
   
   useEffect(() => {
     const timer = setInterval(() => {
@@ -52,7 +59,7 @@ const SideNavBar = () => {
   return (
     <Card className="h-[calc(100vh-2rem)] w-full max-w-[20rem] p-4 shadow-xl shadow-blue-gray-900/5 bg-custom-blue mt-3 ml-3 rounded-xl">
       <div className="p-4 mb-2">
-        <Typography variant="h5" color="blue-gray">
+        <Typography variant="h6" color="blue-gray">
          De - Manager
         </Typography>
         
@@ -77,7 +84,7 @@ const SideNavBar = () => {
               <ListItemPrefix>
                 <PresentationChartBarIcon className="w-5 h-5" />
               </ListItemPrefix>
-              <Typography color="blue-gray" className="mr-auto font-normal">
+              <Typography onClick={DashboardNav} color="blue-gray" className="mr-auto text-base">
                 Dashboard
               </Typography>
             </AccordionHeader>
@@ -161,7 +168,7 @@ const SideNavBar = () => {
           {open === 2 && (
             <AccordionBody className="py-1">
               <List className="p-0">
-                <ListItem>
+                <ListItem onClick={ListViewNav}>
                   <ListItemPrefix>
                     <ChevronRightIcon strokeWidth={3} className="w-5 h-3" />
                   </ListItemPrefix>
