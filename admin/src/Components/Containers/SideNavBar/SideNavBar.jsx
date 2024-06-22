@@ -20,6 +20,7 @@ import {
   Cog6ToothIcon,
   InboxIcon,
   PowerIcon,
+  CalendarIcon,
 } from "@heroicons/react/24/solid";
 import { ChevronRightIcon, ChevronDownIcon } from "@heroicons/react/24/outline";
 
@@ -31,18 +32,20 @@ const SideNavBar = () => {
   const [currentDateTime, setCurrentDateTime] = useState(new Date());
 
   const navigate = useNavigate();
-  
+
   const CalendarNav = () => {
     navigate('/calendar');
   };
   const DashboardNav = () => {
     navigate('/dashboard');
   };
-  
   const ListViewNav = () => {
     navigate('/listview');
   };
-  
+  const ScheduleAppointmentNav = () => {
+    navigate('/schedule-appointment');
+  };
+
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentDateTime(new Date());
@@ -54,17 +57,23 @@ const SideNavBar = () => {
     setOpen(open === value ? 0 : value);
   };
 
-  
-
   return (
     <Card className="h-[calc(100vh-2rem)] w-full max-w-[20rem] p-4 shadow-xl shadow-blue-gray-900/5 bg-custom-blue mt-3 ml-3 rounded-xl">
       <div className="p-4 mb-2">
         <Typography variant="h6" color="blue-gray">
-         De - Manager
+          De - Manager
         </Typography>
-        
       </div>
       <List>
+        <ListItem 
+          onClick={ScheduleAppointmentNav}
+          className="mb-4 text-white transition duration-300 bg-blue-500 rounded-lg cursor-pointer hover:bg-blue-600"
+        >
+          <ListItemPrefix>
+            <CalendarIcon className="w-5 h-5 text-white" />
+          </ListItemPrefix>
+          Schedule Appointment
+        </ListItem>
         <Accordion
           open={open === 1}
           icon={
@@ -178,7 +187,7 @@ const SideNavBar = () => {
                   <ListItemPrefix>
                     <ChevronRightIcon strokeWidth={3} className="w-5 h-3" />
                   </ListItemPrefix>
-                  Calender View
+                  Calendar View
                 </ListItem>
               </List>
             </AccordionBody>
@@ -220,8 +229,8 @@ const SideNavBar = () => {
         </ListItem>
       </List>
       <Typography variant="body2" color="blue-gray" className="mt-auto">
-          {currentDateTime.toLocaleString()}
-        </Typography>
+        {currentDateTime.toLocaleString()}
+      </Typography>
     </Card>
   );
 };
