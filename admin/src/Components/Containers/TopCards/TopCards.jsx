@@ -27,7 +27,7 @@ const TopCards = () => {
         <img src={totalcar} alt="total" className="w-16 h-16" />
         <div className="ml-10">
           <p className="text-xl font-semibold">Total Vehicles</p>
-          <p className="text-4xl font-semibold">{totalVehicles}</p>
+          <p className="text-4xl font-semibold">{totalVehicles} +</p>
           <p className="text-md">Till {todayFormatted}</p> 
         </div>
       </div>
