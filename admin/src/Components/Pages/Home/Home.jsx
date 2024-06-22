@@ -13,7 +13,7 @@ const Home = () => {
       <div className="flex flex-col flex-1">
         <HeaderBar />
         <TopCards />
-        <div className="flex flex-row mt-3 mb-5 ml-5 mr-3 h-4/5">
+        <div className="flex flex-row mt-3 mb-5 ml-3 mr-3 h-4/5">
           <Feedback className="h-full" />
           <Appointments className="h-full" />
           <AppointmentDetails className="h-full" />

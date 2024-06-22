@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { FaCalendarCheck, FaCheckCircle } from 'react-icons/fa';
 import totalcar from '../../../assets/car.png';
 import Appointmentpic from '../../../assets/car-service.png'
+import carpic from '../../../assets/car.png'
 import { format, isSameDay } from 'date-fns';
 import events from '../../../assets/Data/EventsData'; // Replace with your actual events data import
 
@@ -36,14 +37,15 @@ const TopCards = () => {
         <div className="ml-10">
           <p className="text-xl font-semibold">Total Appointments</p>
           <p className="text-4xl font-semibold">{totalAppointmentsToday}</p>
-          <p className="text-md">Till {todayFormatted}</p> 
+          <p className="text-md">{todayFormatted}</p> 
         </div>
       </div>
-      <div className="flex items-center justify-center w-1/3 h-32 p-4 bg-custom-light-blue rounded-xl">
-        <FaCheckCircle size={50} className="mr-4 text-blue-500" />
-        <div>
+      <div className="flex items-center w-1/3 h-32 pl-12 bg-custom-light-blue rounded-xl">
+      <img src={carpic} alt="total-today-appointments" className="w-16 h-16" />
+        <div className='ml-10'>
           <h2 className="text-xl font-semibold">Completed Today</h2>
-          <p className="text-2xl">{setCompleted}</p>
+          <p className="text-4xl font-semibold">{totalAppointmentsToday}</p>
+          <p className="text-md">{todayFormatted}</p> 
         </div>
       </div>
     </div>
