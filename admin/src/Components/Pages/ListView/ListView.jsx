@@ -9,11 +9,11 @@ const ListView = () => {
   const todayEvents = events.filter(event => isToday(new Date(event.start)));
 
   return (
-    <div className='relative flex flex-row overflow-hidden'>
+    <div className="relative flex flex-row h-screen overflow-hidden">
       <SideNavBar />
-      <div className="flex flex-col flex-1">
+      <div className="flex flex-col flex-1 h-full">
         <HeaderBar />
-        <div className="p-4">
+        <div className="flex-1 p-3 overflow-y-auto">
           <h2 className="mb-4 text-2xl">Today's Events</h2>
           {todayEvents.length === 0 ? (
             <p>No events scheduled for today.</p>

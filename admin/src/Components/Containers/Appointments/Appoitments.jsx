@@ -7,14 +7,14 @@ const Appointments = ({ className }) => {
   const todayEvents = events.filter(event => isToday(new Date(event.start)));
 
   return (
-    <div className={`mx-1 bg-custom-light-blue rounded-xl p-4 ${className} w-2/5`}>
-        <p className='pb-3'>Appointemnts Today</p>
+    <div className={`mx-1 bg-custom-light-blue rounded-xl pr-3 pl-3 ${className} w-2/5`}>
+      <p className='mt-3 '>Appointments Today</p>
       {todayEvents.length === 0 ? (
         <p>No events scheduled for today.</p>
       ) : (
-        <div className="space-y-2">
+        <div className="mt-5 space-y-2 overflow-y-auto h-4/5">
           {todayEvents.map(event => (
-            <div key={event.id} className="flex items-center p-3 bg-gray-100 rounded-lg shadow-md hover:bg-gray-200">
+            <div key={event.id} className="flex items-center p-2 bg-gray-100 rounded-lg shadow-md hover:bg-gray-200">
               <div className="flex items-center justify-center flex-shrink-0 w-12 h-12 bg-blue-500 rounded-full">
                 <span className="text-lg font-semibold text-white">{event.title.charAt(0)}</span>
               </div>
