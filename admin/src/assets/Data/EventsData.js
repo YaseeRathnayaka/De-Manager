@@ -16,8 +16,8 @@ const events = [
     {
       appointment_id: 2,
       title: 'oil chnage gh2345',
-      start: new Date(2024,  5, 21, 12, 0), // June 23, 2024, 12:00 PM
-      end: new Date(2024, 5, 21, 14, 0), // June 23, 2024, 1:00 PM
+      start: new Date(2024,  5, 24, 12, 0), // June 23, 2024, 12:00 PM
+      end: new Date(2024, 5, 24, 14, 0), // June 23, 2024, 1:00 PM
     },
     {
       appointment_id: 1,

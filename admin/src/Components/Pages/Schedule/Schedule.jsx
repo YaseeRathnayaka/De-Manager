@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import SideNavBar from '../../Containers/SideNavBar/SideNavBar';
 import HeaderBar from '../../Containers/Header/Header';
+import { AppointmentContext } from '../../../contexts/AppointmentContext.jsx';
 
 const Schedule = () => {
+  const { addAppointment } = useContext(AppointmentContext);
   const [form, setForm] = useState({
     customerName: '',
     email: '',
@@ -61,8 +63,8 @@ const Schedule = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const appointmentId = `APPT-${Date.now()}`;
-    const newAppointment = { ...form, appointmentId };
-    // Add the new appointment to the calendar (implementation depends on your calendar system)
+    const newAppointment = { ...form, appointmentId, start: new Date(form.preferredDate), end: new Date(form.preferredDate), title: form.customerName };
+    addAppointment(newAppointment);
     console.log(newAppointment);
   };
 
@@ -199,19 +201,17 @@ const Schedule = () => {
                 ))}
               </select>
             </div>
-            <div className="pt-4 md:col-span-2">
+            <div className="flex justify-between pt-4 md:col-span-2">
               <button
                 type="button"
-                className="w-full p-2 text-white transition duration-300 bg-blue-500 rounded-md hover:bg-blue-600"
+                className="w-1/2 p-2 mr-2 text-white transition duration-300 bg-blue-500 rounded-md hover:bg-blue-600"
                 onClick={() => setIsServicePanelOpen(true)}
               >
                 Select Service Types
               </button>
-            </div>
-            <div className="pt-4 md:col-span-2">
               <button
                 type="submit"
-                className="w-full p-2 text-white transition duration-300 bg-blue-500 rounded-md hover:bg-blue-600"
+                className="w-1/2 p-2 ml-2 text-white transition duration-300 bg-blue-500 rounded-md hover:bg-blue-600"
               >
                 Schedule Appointment
               </button>
