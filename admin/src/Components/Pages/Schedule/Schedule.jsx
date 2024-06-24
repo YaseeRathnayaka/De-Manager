@@ -69,9 +69,9 @@ const Schedule = () => {
       <SideNavBar />
       <div className="flex flex-col flex-1">
         <HeaderBar />
-        <div className="p-6">
-          <h2 className="mb-6 text-2xl font-bold">Schedule an Appointment</h2>
-          <form onSubmit={handleSubmit} className="space-y-4">
+        <div className="pt-2 pl-6 mr-3">
+          <h2 className="mb-3 text-2xl font-bold">Schedule an Appointment</h2>
+          <form onSubmit={handleSubmit} className="grid grid-cols-1 gap-4 md:grid-cols-2">
             <div>
               <label className="block text-sm font-medium text-gray-700">Customer Name</label>
               <input
@@ -197,7 +197,7 @@ const Schedule = () => {
                 ))}
               </select>
             </div>
-            <div>
+            <div className="md:col-span-2">
               <label className="block text-sm font-medium text-gray-700">Service Types</label>
               <div className="mt-1">
                 {serviceOptions.map(service => (
@@ -215,7 +215,7 @@ const Schedule = () => {
                 ))}
               </div>
             </div>
-            <div className="pt-4">
+            <div className="pt-4 md:col-span-2">
               <button
                 type="submit"
                 className="w-full p-2 text-white transition duration-300 bg-blue-500 rounded-md hover:bg-blue-600"
