@@ -18,6 +18,8 @@ const Schedule = () => {
     serviceTypes: [],
   });
 
+  const [isServicePanelOpen, setIsServicePanelOpen] = useState(false);
+
   const serviceOptions = [
     "Oil Change",
     "Tire Rotation",
@@ -69,8 +71,8 @@ const Schedule = () => {
       <SideNavBar />
       <div className="flex flex-col flex-1">
         <HeaderBar />
-        <div className="pt-2 pl-6 mr-3">
-          <h2 className="mb-3 text-2xl font-bold">Schedule an Appointment</h2>
+        <div className="p-6">
+          <h2 className="mb-6 text-2xl font-bold">Schedule an Appointment</h2>
           <form onSubmit={handleSubmit} className="grid grid-cols-1 gap-4 md:grid-cols-2">
             <div>
               <label className="block text-sm font-medium text-gray-700">Customer Name</label>
@@ -197,23 +199,14 @@ const Schedule = () => {
                 ))}
               </select>
             </div>
-            <div className="md:col-span-2">
-              <label className="block text-sm font-medium text-gray-700">Service Types</label>
-              <div className="mt-1">
-                {serviceOptions.map(service => (
-                  <label key={service} className="inline-flex items-center mr-4">
-                    <input
-                      type="checkbox"
-                      name="serviceTypes"
-                      value={service}
-                      checked={form.serviceTypes.includes(service)}
-                      onChange={() => handleServiceChange(service)}
-                      className="form-checkbox"
-                    />
-                    <span className="ml-2">{service}</span>
-                  </label>
-                ))}
-              </div>
+            <div className="pt-4 md:col-span-2">
+              <button
+                type="button"
+                className="w-full p-2 text-white transition duration-300 bg-blue-500 rounded-md hover:bg-blue-600"
+                onClick={() => setIsServicePanelOpen(true)}
+              >
+                Select Service Types
+              </button>
             </div>
             <div className="pt-4 md:col-span-2">
               <button
@@ -226,6 +219,39 @@ const Schedule = () => {
           </form>
         </div>
       </div>
+
+      {/* Side Panel for Selecting Services */}
+      {isServicePanelOpen && (
+        <div className="fixed inset-0 z-50 flex justify-end bg-gray-900 bg-opacity-50">
+          <div className="w-64 h-full p-4 bg-white">
+            <h3 className="mb-4 text-lg font-bold">Select Service Types</h3>
+            <div className="space-y-2">
+              {serviceOptions.map(service => (
+                <label key={service} className="inline-flex items-center">
+                  <input
+                    type="checkbox"
+                    name="serviceTypes"
+                    value={service}
+                    checked={form.serviceTypes.includes(service)}
+                    onChange={() => handleServiceChange(service)}
+                    className="form-checkbox"
+                  />
+                  <span className="ml-2">{service}</span>
+                </label>
+              ))}
+            </div>
+            <div className="mt-4">
+              <button
+                type="button"
+                className="w-full p-2 text-white transition duration-300 bg-blue-500 rounded-md hover:bg-blue-600"
+                onClick={() => setIsServicePanelOpen(false)}
+              >
+                Done
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
