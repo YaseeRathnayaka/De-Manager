@@ -4,6 +4,7 @@ import Home from './Components/Pages/Home/Home';
 import Schedule from './Components/Pages/Schedule/Schedule'
 import CalenderView from './Components/Pages/CalenderView/CalenderView'
 import ListView from './Components/Pages/ListView/ListView';
+import Login from './Components/Pages/Login/Login';
 
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
           <Route path="/schedule" element={<Schedule />} />
           <Route path="/calendar" element={<CalenderView />} />
           <Route path="/listview" element={<ListView />} />
+          <Route path="login" element={<Login />}  />
         </Routes>
       </div>
     </Router>
