@@ -1,7 +1,11 @@
 import FirstPage from "./Pages/FirstPage";
+import ThiredPage from "./Pages/ThiredPage";
 
 export default function App() {
   return (
-    <FirstPage/>
+    <div >
+      <FirstPage />
+      <ThiredPage/>
+    </div>
   )
 }
