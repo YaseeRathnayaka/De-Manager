@@ -30,63 +30,6 @@ const ReservationForm = () => {
         // You can send this formData to your server or use it as needed
     };
 
-    const styles = {
-        form: {
-            maxWidth: '800px',
-            margin: '0 auto',
-            padding: '20px',
-            border: '1px solid #ccc',
-            borderRadius: '10px',
-            backgroundColor: '#f9f9f9',
-            display: 'flex',
-            flexDirection: 'row',
-            flexWrap: 'wrap',
-            justifyContent: 'space-between'
-        },
-        section: {
-            marginBottom: '20px',
-            flex: '0 0 48%',
-            boxSizing: 'border-box'
-        },
-        fullWidth: {
-            flex: '0 0 100%'
-        },
-        label: {
-            display: 'block',
-            marginBottom: '10px',
-            fontWeight: 'bold'
-        },
-        input: {
-            width: '100%',
-            padding: '8px',
-            marginBottom: '10px',
-            borderRadius: '5px',
-            border: '1px solid #ccc'
-        },
-        textarea: {
-            width: '100%',
-            padding: '8px',
-            borderRadius: '5px',
-            border: '1px solid #ccc'
-        },
-        button: {
-            display: 'block',
-            width: '100%',
-            padding: '10px',
-            backgroundColor: '#4CAF50',
-            color: 'white',
-            border: 'none',
-            borderRadius: '5px',
-            fontSize: '16px',
-            cursor: 'pointer'
-        },
-        header: {
-            textAlign: 'center',
-            marginBottom: '20px',
-            flex: '0 0 100%'
-        }
-    };
-
     return (
         <form onSubmit={handleSubmit} style={styles.form}>
             <h2 style={styles.header}>Make Your Reservation Here</h2>
@@ -116,8 +59,9 @@ const ReservationForm = () => {
                 <label style={styles.label}>
                     Preferred Branch*:
                     <select name="preferredBranch" value={formData.preferredBranch} onChange={handleChange} required style={styles.input}>
-                        <option value="">Select Branch</option>
-                        {/* Add options here */}
+                        <option value="">Balangoda</option>
+                        <option value="">Kurunegala</option>
+                        <option value="">Colombo</option>
                     </select>
                 </label>
                 <label style={styles.label}>
@@ -144,7 +88,7 @@ const ReservationForm = () => {
                     Address*:
                     <input type="text" name="address" value={formData.address} onChange={handleChange} required style={styles.input} />
                 </label>
-                <label style={styles.label}>
+                <label style={{ ...styles.label, ...styles.fullWidth }}>
                     Message:
                     <textarea name="message" value={formData.message} onChange={handleChange} style={styles.textarea} />
                 </label>
@@ -153,6 +97,71 @@ const ReservationForm = () => {
             <button type="submit" style={styles.button}>Submit</button>
         </form>
     );
+};
+
+const styles = {
+    form: {
+        maxWidth: '100%',
+        margin: '0 auto',
+        padding: '30px',
+        border: '1px solid #ccc',
+        borderRadius: '10px',
+        backgroundColor: '#f9f9f9',
+        display: 'flex',
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        justifyContent: 'space-between',
+        overflow: 'hidden'
+    },
+    section: {
+        marginBottom: '20px',
+        paddingRight: '20px',
+        flex: '0 0 48%',
+        boxSizing: 'border-box'
+    },
+    fullWidth: {
+        flex: '0 0 100%'
+    },
+    label: {
+        display: 'block',
+        marginBottom: '10px',
+        fontWeight: 'bold'
+    },
+    input: {
+        width: '100%',
+        padding: '16px',
+        marginBottom: '10px',
+        borderRadius: '5px',
+        border: '1px solid #ccc',
+        boxSizing: 'border-box'
+    },
+    textarea: {
+        width: '100%',
+        padding: '16px',
+        marginBottom: '10px',
+        borderRadius: '5px',
+        border: '1px solid #ccc',
+        resize: 'none', // Prevents textarea from being resized
+        height: '210px' // Fixed height to avoid layout changes
+    },
+    button: {
+        display: 'block',
+        width: '100%',
+        padding: '15px',
+        backgroundColor: '#4CAF50',
+        color: 'white',
+        border: 'none',
+        borderRadius: '5px',
+        fontSize: '16px',
+        cursor: 'pointer',
+        marginLeft:'25%',
+        marginRight:'25%',
+    },
+    header: {
+        textAlign: 'center',
+        marginBottom: '20px',
+        flex: '0 0 100%'
+    }
 };
 
 export default ReservationForm;
