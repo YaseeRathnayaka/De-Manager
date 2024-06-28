@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const ThiredPage = () => {
+const ReservationForm = () => {
     const [formData, setFormData] = useState({
         vehicleMake: '',
         vehicleModel: '',
@@ -31,71 +31,137 @@ const ThiredPage = () => {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
-            <h2>Make Your Reservation Here</h2>
+        <form onSubmit={handleSubmit} style={styles.form}>
+            <h2 style={styles.header}>Make Your Reservation Here</h2>
             
-            <div>
+            <div style={styles.section}>
                 <h3>VEHICLE DETAILS</h3>
-                <label>
+                <label style={styles.label}>
                     Vehicle Make*:
-                    <input type="text" name="vehicleMake" value={formData.vehicleMake} onChange={handleChange} required />
+                    <input type="text" name="vehicleMake" value={formData.vehicleMake} onChange={handleChange} required style={styles.input} />
                 </label>
-                <label>
+                <label style={styles.label}>
                     Vehicle Model*:
-                    <input type="text" name="vehicleModel" value={formData.vehicleModel} onChange={handleChange} required />
+                    <input type="text" name="vehicleModel" value={formData.vehicleModel} onChange={handleChange} required style={styles.input} />
                 </label>
-                <label>
+                <label style={styles.label}>
                     Vehicle Number*:
-                    <input type="text" name="vehicleNumber" value={formData.vehicleNumber} onChange={handleChange} required />
+                    <input type="text" name="vehicleNumber" value={formData.vehicleNumber} onChange={handleChange} required style={styles.input} />
                 </label>
-                <label>
+                <label style={styles.label}>
                     Manufactured Year*:
-                    <input type="text" name="manufacturedYear" value={formData.manufacturedYear} onChange={handleChange} required />
+                    <input type="text" name="manufacturedYear" value={formData.manufacturedYear} onChange={handleChange} required style={styles.input} />
                 </label>
-                <label>
+                <label style={styles.label}>
                     Preferred Date*:
-                    <input type="date" name="preferredDate" value={formData.preferredDate} onChange={handleChange} required />
+                    <input type="date" name="preferredDate" value={formData.preferredDate} onChange={handleChange} required style={styles.input} />
                 </label>
-                <label>
+                <label style={styles.label}>
                     Preferred Branch*:
-                    <select name="preferredBranch" value={formData.preferredBranch} onChange={handleChange} required>
-                        <option value="">Select Branch</option>
-                        {/* Add options here */}
+                    <select name="preferredBranch" value={formData.preferredBranch} onChange={handleChange} required style={styles.input}>
+                        <option value="">Balangoda</option>
+                        <option value="">Kurunegala</option>
+                        <option value="">Colombo</option>
                     </select>
                 </label>
-                <label>
+                <label style={styles.label}>
                     Preferred Time*:
-                    <input type="time" name="preferredTime" value={formData.preferredTime} onChange={handleChange} required />
+                    <input type="time" name="preferredTime" value={formData.preferredTime} onChange={handleChange} required style={styles.input} />
                 </label>
             </div>
 
-            <div>
+            <div style={styles.section}>
                 <h3>OWNER’S DETAILS</h3>
-                <label>
+                <label style={styles.label}>
                     Name*:
-                    <input type="text" name="name" value={formData.name} onChange={handleChange} required />
+                    <input type="text" name="name" value={formData.name} onChange={handleChange} required style={styles.input} />
                 </label>
-                <label>
+                <label style={styles.label}>
                     E-mail*:
-                    <input type="email" name="email" value={formData.email} onChange={handleChange} required />
+                    <input type="email" name="email" value={formData.email} onChange={handleChange} required style={styles.input} />
                 </label>
-                <label>
+                <label style={styles.label}>
                     Mobile Number*:
-                    <input type="tel" name="mobileNumber" value={formData.mobileNumber} onChange={handleChange} required />
+                    <input type="tel" name="mobileNumber" value={formData.mobileNumber} onChange={handleChange} required style={styles.input} />
                 </label>
-                <label>
+                <label style={styles.label}>
                     Address*:
-                    <input type="text" name="address" value={formData.address} onChange={handleChange} required />
+                    <input type="text" name="address" value={formData.address} onChange={handleChange} required style={styles.input} />
                 </label>
-                <label>
+                <label style={{ ...styles.label, ...styles.fullWidth }}>
                     Message:
-                    <textarea name="message" value={formData.message} onChange={handleChange} />
+                    <textarea name="message" value={formData.message} onChange={handleChange} style={styles.textarea} />
                 </label>
             </div>
             
-            <button type="submit">Submit</button>
+            <button type="submit" style={styles.button}>Submit</button>
         </form>
     );
 };
 
-export default ThiredPage;
+const styles = {
+    form: {
+        maxWidth: '100%',
+        margin: '0 auto',
+        padding: '30px',
+        border: '1px solid #ccc',
+        borderRadius: '10px',
+        backgroundColor: '#f9f9f9',
+        display: 'flex',
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        justifyContent: 'space-between',
+        overflow: 'hidden'
+    },
+    section: {
+        marginBottom: '20px',
+        paddingRight: '20px',
+        flex: '0 0 48%',
+        boxSizing: 'border-box'
+    },
+    fullWidth: {
+        flex: '0 0 100%'
+    },
+    label: {
+        display: 'block',
+        marginBottom: '10px',
+        fontWeight: 'bold'
+    },
+    input: {
+        width: '100%',
+        padding: '16px',
+        marginBottom: '10px',
+        borderRadius: '5px',
+        border: '1px solid #ccc',
+        boxSizing: 'border-box'
+    },
+    textarea: {
+        width: '100%',
+        padding: '16px',
+        marginBottom: '10px',
+        borderRadius: '5px',
+        border: '1px solid #ccc',
+        resize: 'none', // Prevents textarea from being resized
+        height: '210px' // Fixed height to avoid layout changes
+    },
+    button: {
+        display: 'block',
+        width: '100%',
+        padding: '15px',
+        backgroundColor: '#4CAF50',
+        color: 'white',
+        border: 'none',
+        borderRadius: '5px',
+        fontSize: '16px',
+        cursor: 'pointer',
+        marginLeft:'25%',
+        marginRight:'25%',
+    },
+    header: {
+        textAlign: 'center',
+        marginBottom: '20px',
+        flex: '0 0 100%'
+    }
+};
+
+export default ReservationForm;
