@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const ReservationForm = () => {
+const ThirdPage = () => {
     const [formData, setFormData] = useState({
         vehicleMake: '',
         vehicleModel: '',
@@ -164,4 +164,4 @@ const styles = {
     }
 };
 
-export default ReservationForm;
+export default ThirdPage;

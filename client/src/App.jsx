@@ -1,11 +1,14 @@
-import FirstPage from "./Pages/FirstPage";
-import ThiredPage from "./Pages/ThiredPage";
+import './App.css';
+import FirstPage from './Pages/FirstPage';
+import ThirdPage from './Pages/ThirdPage';
 
-export default function App() {
+function App() {
   return (
-    <div >
+    <div>
       <FirstPage />
-      <ThiredPage/>
+      <ThirdPage />
     </div>
-  )
+  );
 }
+
+export default App;
