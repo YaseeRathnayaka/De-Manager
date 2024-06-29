@@ -19,16 +19,15 @@ const Schedule = () => {
     timeSlot: '',
     serviceTypes: [],
   });
-
+  const [newService, setNewService] = useState('');
   const [isServicePanelOpen, setIsServicePanelOpen] = useState(false);
-
-  const serviceOptions = [
+  const [serviceOptions, setServiceOptions] = useState([
     "Oil Change",
     "Tire Rotation",
     "Brake Inspection",
     "Battery Check",
-    // Add more services as needed
-  ];
+  ]);
+  const [showConfirmation, setShowConfirmation] = useState(false);
 
   const timeSlots = [
     "08:00 AM - 10:00 AM",
@@ -60,12 +59,27 @@ const Schedule = () => {
     });
   };
 
+  const handleAddService = () => {
+    if (newService && !serviceOptions.includes(newService)) {
+      setServiceOptions([...serviceOptions, newService]);
+      setForm({
+        ...form,
+        serviceTypes: [...form.serviceTypes, newService],
+      });
+      setNewService('');
+    }
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const appointmentId = `APPT-${Date.now()}`;
     const newAppointment = { ...form, appointmentId, start: new Date(form.preferredDate), end: new Date(form.preferredDate), title: form.customerName };
     addAppointment(newAppointment);
     console.log(newAppointment);
+
+    // Show confirmation message
+    setShowConfirmation(true);
+    setTimeout(() => setShowConfirmation(false), 3000); // Hide after 3 seconds
   };
 
   return (
@@ -75,7 +89,7 @@ const Schedule = () => {
         <HeaderBar />
         <div className="p-6">
           <h2 className="mb-6 text-2xl font-bold">Schedule an Appointment</h2>
-          <form onSubmit={handleSubmit} className="grid grid-cols-1 gap-4 md:grid-cols-2">
+          <form onSubmit={handleSubmit} className="grid grid-cols-1 gap-5 md:grid-cols-3">
             <div>
               <label className="block text-sm font-medium text-gray-700">Customer Name</label>
               <input
@@ -223,11 +237,11 @@ const Schedule = () => {
       {/* Side Panel for Selecting Services */}
       {isServicePanelOpen && (
         <div className="fixed inset-0 z-50 flex justify-end bg-gray-900 bg-opacity-50">
-          <div className="w-64 h-full p-4 bg-white">
+          <div className="w-1/3 h-full p-4 bg-white">
             <h3 className="mb-4 text-lg font-bold">Select Service Types</h3>
-            <div className="space-y-2">
+            <div className="grid md:grid-cols-2">
               {serviceOptions.map(service => (
-                <label key={service} className="inline-flex items-center">
+                <label key={service} className="">
                   <input
                     type="checkbox"
                     name="serviceTypes"
@@ -236,9 +250,26 @@ const Schedule = () => {
                     onChange={() => handleServiceChange(service)}
                     className="form-checkbox"
                   />
-                  <span className="ml-2">{service}</span>
+                  <span className="ml-3">{service}</span>
+                  
                 </label>
+                
               ))}
+            </div>
+            <div className="mt-4">
+              <input
+                type="text"
+                value={newService}
+                onChange={(e) => setNewService(e.target.value)}
+                className="form-input"
+                placeholder="Enter a new service"
+              />
+              <button
+                onClick={handleAddService}
+                className="ml-2 btn btn-primary"
+              >
+                Add Service
+              </button>
             </div>
             <div className="mt-4">
               <button
@@ -249,6 +280,15 @@ const Schedule = () => {
                 Done
               </button>
             </div>
+          </div>
+        </div>
+      )}
+
+      {/* Confirmation Message */}
+      {showConfirmation && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-gray-900 bg-opacity-50">
+          <div className="p-4 bg-white rounded-md shadow-md animate-bounce">
+            <h3 className="text-lg font-bold">Appointment Scheduled!</h3>
           </div>
         </div>
       )}
