@@ -13,7 +13,7 @@ const ListView = () => {
       <SideNavBar />
       <div className="flex flex-col flex-1 h-full">
         <HeaderBar />
-        <div className="flex-1 p-3 overflow-y-auto">
+        <div className="flex-1 p-3 ml-3 overflow-y-auto">
           <h2 className="mb-4 text-2xl">Today's Events</h2>
           {todayEvents.length === 0 ? (
             <p>No events scheduled for today.</p>

@@ -23,13 +23,10 @@ import {
   CalendarIcon,
 } from "@heroicons/react/24/solid";
 import { ChevronRightIcon, ChevronDownIcon } from "@heroicons/react/24/outline";
+import DigitalClock from '../DigitalClock/DigitalClock'; 
 
-const SideNavBar = () => {
+const SideNavBar = ({ analyticsSwitch, setAnalyticsSwitch, appointmentsSwitch, setAppointmentsSwitch, detailsSwitch, setDetailsSwitch }) => {
   const [open, setOpen] = useState(0);
-  const [analyticsSwitch, setAnalyticsSwitch] = useState(false);
-  const [appointmentsSwitch, setAppointmentsSwitch] = useState(false);
-  const [detailsSwitch, setDetailsSwitch] = useState(false);
-  const [currentDateTime, setCurrentDateTime] = useState(new Date());
 
   const navigate = useNavigate();
 
@@ -45,32 +42,28 @@ const SideNavBar = () => {
   const ScheduleAppointmentNav = () => {
     navigate('/schedule-appointment');
   };
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentDateTime(new Date());
-    }, 1000);
-    return () => clearInterval(timer);
-  }, []);
+  const SettingsNav = () => {
+    navigate('/settings');
+  };
 
   const handleOpen = (value) => {
     setOpen(open === value ? 0 : value);
   };
 
   return (
-    <Card className="h-[calc(100vh-2rem)] w-full max-w-[20rem] p-4 shadow-xl shadow-blue-gray-900/5 bg-custom-blue mt-3 ml-3 rounded-xl">
+    <Card className="sidenav h-[calc(100vh-2rem)] w-full max-w-[20rem] p-4 shadow-xl shadow-blue-gray-900/5 bg-custom-blue mt-3 ml-3 rounded-xl">
       <div className="p-4 mb-2">
         <Typography variant="h6" color="blue-gray">
           De - Manager
         </Typography>
       </div>
-      <List>
+      <List className="">
         <ListItem 
           onClick={ScheduleAppointmentNav}
-          className="mb-4 text-white transition duration-300 bg-blue-500 rounded-lg cursor-pointer hover:bg-blue-600"
+          className="mb-4 text-white transition duration-300 bg-blue-500 rounded-lg cursor-pointer hover:bg-blue-600 "
         >
           <ListItemPrefix>
-            <CalendarIcon className="w-5 h-5 text-white" />
+            <CalendarIcon className="w-5 h-5 mr-5 text-white" />
           </ListItemPrefix>
           Schedule Appointment
         </ListItem>
@@ -91,7 +84,7 @@ const SideNavBar = () => {
               className="p-3 border-b-0"
             >
               <ListItemPrefix>
-                <PresentationChartBarIcon className="w-5 h-5" />
+                <PresentationChartBarIcon className="w-5 h-5 mr-5" />
               </ListItemPrefix>
               <Typography onClick={DashboardNav} color="blue-gray" className="mr-auto text-base">
                 Dashboard
@@ -118,7 +111,7 @@ const SideNavBar = () => {
                 </ListItem>
                 <ListItem>
                   <ListItemPrefix>
-                    <ChevronRightIcon strokeWidth={3} className="w-5 h-3" />
+                    <ChevronRightIcon strokeWidth={3} className="w-5 h-3 " />
                   </ListItemPrefix>
                   <Typography color="blue-gray" className="mr-auto">
                     Appointments
@@ -167,7 +160,7 @@ const SideNavBar = () => {
               className="p-3 border-b-0"
             >
               <ListItemPrefix>
-                <ShoppingBagIcon className="w-5 h-5" />
+                <ShoppingBagIcon className="w-5 h-5 mr-5" />
               </ListItemPrefix>
               <Typography color="blue-gray" className="mr-auto font-normal">
                 Scheduled Events
@@ -196,7 +189,7 @@ const SideNavBar = () => {
         <hr className="my-2 border-blue-gray-50" />
         <ListItem>
           <ListItemPrefix>
-            <InboxIcon className="w-5 h-5" />
+            <InboxIcon className="w-5 h-5 mr-5" />
           </ListItemPrefix>
           Requests
           <ListItemSuffix>
@@ -211,26 +204,26 @@ const SideNavBar = () => {
         </ListItem>
         <ListItem>
           <ListItemPrefix>
-            <UserCircleIcon className="w-5 h-5" />
+            <UserCircleIcon className="w-5 h-5 mr-5" />
           </ListItemPrefix>
           Profile
         </ListItem>
-        <ListItem>
+        <ListItem onClick={SettingsNav}>
           <ListItemPrefix>
-            <Cog6ToothIcon className="w-5 h-5" />
+            <Cog6ToothIcon className="w-5 h-5 mr-5" />
           </ListItemPrefix>
           Settings
         </ListItem>
         <ListItem>
           <ListItemPrefix>
-            <PowerIcon className="w-5 h-5" />
+            <PowerIcon className="w-5 h-5 mr-5" />
           </ListItemPrefix>
           Log Out
         </ListItem>
       </List>
-      <Typography variant="body2" color="blue-gray" className="mt-auto">
-        {currentDateTime.toLocaleString()}
-      </Typography>
+      <div className="mt-auto">
+        <DigitalClock />
+      </div>
     </Card>
   );
 };
