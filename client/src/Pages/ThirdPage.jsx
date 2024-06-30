@@ -141,8 +141,8 @@ const styles = {
         marginBottom: '10px',
         borderRadius: '5px',
         border: '1px solid #ccc',
-        resize: 'none', // Prevents textarea from being resized
-        height: '210px' // Fixed height to avoid layout changes
+        resize: 'none', 
+        height: '210px'
     },
     button: {
         display: 'block',
