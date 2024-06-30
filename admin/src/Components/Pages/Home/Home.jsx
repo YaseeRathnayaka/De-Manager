@@ -7,9 +7,9 @@ import Appointments from '../../Containers/Appointments/Appoitments';
 import AppointmentDetails from '../../Containers/AppointmentDetails/AppointmentDetails';
 
 const Home = () => {
-  const [analyticsSwitch, setAnalyticsSwitch] = useState(false);
-  const [appointmentsSwitch, setAppointmentsSwitch] = useState(false);
-  const [detailsSwitch, setDetailsSwitch] = useState(false);
+  const [analyticsSwitch, setAnalyticsSwitch] = useState(true);
+  const [appointmentsSwitch, setAppointmentsSwitch] = useState(true);
+  const [detailsSwitch, setDetailsSwitch] = useState(true);
 
   const calculateWidth = () => {
     const activeComponents = [analyticsSwitch, appointmentsSwitch, detailsSwitch].filter(Boolean).length;
