@@ -11,6 +11,16 @@ const Home = () => {
   const [appointmentsSwitch, setAppointmentsSwitch] = useState(false);
   const [detailsSwitch, setDetailsSwitch] = useState(false);
 
+  const calculateWidth = () => {
+    const activeComponents = [analyticsSwitch, appointmentsSwitch, detailsSwitch].filter(Boolean).length;
+    if (activeComponents === 1) return 'w-full';
+    if (activeComponents === 2) return 'w-1/2';
+    if (analyticsSwitch && appointmentsSwitch && detailsSwitch) return { feedback: 'w-1/5', others: 'w-2/5' };
+    return '';
+  };
+
+  const widths = calculateWidth();
+
   return (
     <div className='flex flex-row h-screen overflow-hidden'>
       <SideNavBar 
@@ -25,9 +35,15 @@ const Home = () => {
         <HeaderBar />
         <TopCards />
         <div className="flex flex-row mt-1 mb-5 ml-3 mr-3 h-4/5">
-          {analyticsSwitch && <Feedback className="flex-1 h-full" />}
-          {appointmentsSwitch && <Appointments className="flex-1 h-full" />}
-          {detailsSwitch && <AppointmentDetails className="flex-1 h-full" />}
+          {analyticsSwitch && (
+            <Feedback className={`h-full ${widths.feedback || widths}`} />
+          )}
+          {appointmentsSwitch && (
+            <Appointments className={`h-full ${widths.others || widths}`} />
+          )}
+          {detailsSwitch && (
+            <AppointmentDetails className={`h-full ${widths.others || widths}`} />
+          )}
         </div>
       </div>
     </div>
