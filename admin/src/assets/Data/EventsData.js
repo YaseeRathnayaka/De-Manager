@@ -20,8 +20,8 @@ const events = [
   {
     appointment_id: 2,
     title: 'Oil Change abh3456',
-    start: new Date(2024, 5, 21, 10, 0), // June 21, 2024, 10:00 AM
-    end: new Date(2024, 5, 21, 12, 0), // June 21, 2024, 12:00 PM
+    start: new Date(2024, 6, 1, 10, 0), // June 21, 2024, 10:00 AM
+    end: new Date(2024, 6, 1, 12, 0), // June 21, 2024, 12:00 PM
     customerName: 'Jane Smith',
     email: 'jane.smith@example.com',
     mobile: '987-654-3210',
@@ -38,8 +38,8 @@ const events = [
   {
     appointment_id: 3,
     title: 'Tire Rotation gh2345',
-    start: new Date(2024, 5, 30, 12, 0), // June 30, 2024, 12:00 PM
-    end: new Date(2024, 5, 30, 14, 0), // June 30, 2024, 2:00 PM
+    start: new Date(2024, 6, 1, 12, 0), // June 30, 2024, 12:00 PM
+    end: new Date(2024, 6, 1, 14, 0), // June 30, 2024, 2:00 PM
     customerName: 'Michael Johnson',
     email: 'michael.johnson@example.com',
     mobile: '456-789-0123',
@@ -56,8 +56,8 @@ const events = [
   {
     appointment_id: 4,
     title: 'Brake Inspection abs3456',
-    start: new Date(2024, 5, 30, 10, 0), // June 24, 2024, 10:00 AM
-    end: new Date(2024, 5, 30, 12, 0), // June 24, 2024, 12:00 PM
+    start: new Date(2024, 6, 1, 10, 0), // June 24, 2024, 10:00 AM
+    end: new Date(2024, 6, 1, 12, 0), // June 24, 2024, 12:00 PM
     customerName: 'Emily Davis',
     email: 'emily.davis@example.com',
     mobile: '321-654-0987',
