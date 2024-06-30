@@ -41,7 +41,7 @@ const ThirdPage = () => {
                     <input type="text" name="vehicleMake" value={formData.vehicleMake} onChange={handleChange} required style={styles.input} />
                 </label>
                 <label style={styles.label}>
-                    Vehicle Model*:
+                    Vehicle Model:
                     <input type="text" name="vehicleModel" value={formData.vehicleModel} onChange={handleChange} required style={styles.input} />
                 </label>
                 <label style={styles.label}>
