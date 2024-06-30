@@ -23,13 +23,13 @@ import {
   CalendarIcon,
 } from "@heroicons/react/24/solid";
 import { ChevronRightIcon, ChevronDownIcon } from "@heroicons/react/24/outline";
+import DigitalClock from '../DigitalClock/DigitalClock'; 
 
 const SideNavBar = () => {
   const [open, setOpen] = useState(0);
   const [analyticsSwitch, setAnalyticsSwitch] = useState(false);
   const [appointmentsSwitch, setAppointmentsSwitch] = useState(false);
   const [detailsSwitch, setDetailsSwitch] = useState(false);
-  const [currentDateTime, setCurrentDateTime] = useState(new Date());
 
   const navigate = useNavigate();
 
@@ -48,12 +48,6 @@ const SideNavBar = () => {
   const SettingsNav = () => {
     navigate('/settings');
   };
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentDateTime(new Date());
-    }, 1000);
-    return () => clearInterval(timer);
-  }, []);
 
   const handleOpen = (value) => {
     setOpen(open === value ? 0 : value);
@@ -230,9 +224,9 @@ const SideNavBar = () => {
           Log Out
         </ListItem>
       </List>
-      <Typography variant="body2" color="blue-gray" className="mt-auto">
-        {currentDateTime.toLocaleString()}
-      </Typography>
+      <div className="mt-4">
+        <DigitalClock />
+      </div>
     </Card>
   );
 };
