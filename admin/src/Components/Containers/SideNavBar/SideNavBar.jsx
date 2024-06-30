@@ -224,8 +224,8 @@ const SideNavBar = () => {
           Log Out
         </ListItem>
       </List>
-      <div className="mt-4">
-        <DigitalClock />
+      <div className="mt-auto">
+        <DigitalClock  />
       </div>
     </Card>
   );

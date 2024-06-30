@@ -26,7 +26,7 @@ const DigitalClock = () => {
   };
 
   return (
-    <div className="p-4 text-center text-white rounded-md bg-slate-950">
+    <div className="p-4 text-center rounded-xl clock-container bg-custom-clock text-custom-clock-text">
       <div className="font-mono text-4xl">{formatTime(currentDateTime)}</div>
       <div className="font-mono text-lg">{formatDate(currentDateTime)}</div>
     </div>
