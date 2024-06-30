@@ -10,6 +10,7 @@ const Home = () => {
   const [analyticsSwitch, setAnalyticsSwitch] = useState(true);
   const [appointmentsSwitch, setAppointmentsSwitch] = useState(true);
   const [detailsSwitch, setDetailsSwitch] = useState(true);
+  const [selectedAppointment, setSelectedAppointment] = useState(null);
 
   const calculateWidth = () => {
     const activeComponents = [analyticsSwitch, appointmentsSwitch, detailsSwitch].filter(Boolean).length;
@@ -39,15 +40,21 @@ const Home = () => {
             <Feedback className={`h-full ${widths.feedback || widths}`} />
           )}
           {appointmentsSwitch && (
-            <Appointments className={`h-full ${widths.others || widths}`} />
+            <Appointments 
+              className={`h-full ${widths.others || widths}`}
+              onSelectAppointment={setSelectedAppointment}
+            />
           )}
           {detailsSwitch && (
-            <AppointmentDetails className={`h-full ${widths.others || widths}`} />
+            <AppointmentDetails 
+              className={`h-full ${widths.others || widths}`}
+              appointment={selectedAppointment}
+            />
           )}
         </div>
       </div>
     </div>
   );
-}
+};
 
 export default Home;
