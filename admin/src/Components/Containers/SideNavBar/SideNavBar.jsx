@@ -45,7 +45,9 @@ const SideNavBar = () => {
   const ScheduleAppointmentNav = () => {
     navigate('/schedule-appointment');
   };
-
+  const SettingsNav = () => {
+    navigate('/settings');
+  };
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentDateTime(new Date());
@@ -58,7 +60,7 @@ const SideNavBar = () => {
   };
 
   return (
-    <Card className="h-[calc(100vh-2rem)] w-full max-w-[20rem] p-4 shadow-xl shadow-blue-gray-900/5 bg-custom-blue mt-3 ml-3 rounded-xl">
+    <Card className="sidenav h-[calc(100vh-2rem)] w-full max-w-[20rem] p-4 shadow-xl shadow-blue-gray-900/5 bg-custom-blue mt-3 ml-3 rounded-xl">
       <div className="p-4 mb-2">
         <Typography variant="h6" color="blue-gray">
           De - Manager
@@ -215,7 +217,7 @@ const SideNavBar = () => {
           </ListItemPrefix>
           Profile
         </ListItem>
-        <ListItem>
+        <ListItem onClick={SettingsNav}>
           <ListItemPrefix>
             <Cog6ToothIcon className="w-5 h-5" />
           </ListItemPrefix>
