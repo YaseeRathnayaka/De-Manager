@@ -1,7 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
-const AppointmentDetails = ({ className, appointment }) => {
+const AppointmentDetails = ({ className, appointment, onCompleteAppointment }) => {
   const [servicesCompleted, setServicesCompleted] = useState([]);
+
+  useEffect(() => {
+    if (appointment) {
+      setServicesCompleted([]);
+    }
+  }, [appointment]);
 
   if (!appointment) {
     return (
@@ -17,6 +23,13 @@ const AppointmentDetails = ({ className, appointment }) => {
         ? prev.filter((s) => s !== service)
         : [...prev, service]
     );
+  };
+
+  const handleMarkAsCompleted = () => {
+    if (servicesCompleted.length === appointment.serviceTypes.length) {
+      onCompleteAppointment(appointment.id);
+      alert('Appointment marked as completed!');
+    }
   };
 
   return (
@@ -49,7 +62,7 @@ const AppointmentDetails = ({ className, appointment }) => {
       {servicesCompleted.length === appointment.serviceTypes.length && (
         <button
           className="w-full p-2 mt-4 text-white transition duration-300 bg-green-500 rounded-md hover:bg-green-600"
-          onClick={() => alert('All services completed!')}
+          onClick={handleMarkAsCompleted}
         >
           Mark as Completed
         </button>
