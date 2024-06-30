@@ -25,11 +25,8 @@ import {
 import { ChevronRightIcon, ChevronDownIcon } from "@heroicons/react/24/outline";
 import DigitalClock from '../DigitalClock/DigitalClock'; 
 
-const SideNavBar = () => {
+const SideNavBar = ({ analyticsSwitch, setAnalyticsSwitch, appointmentsSwitch, setAppointmentsSwitch, detailsSwitch, setDetailsSwitch }) => {
   const [open, setOpen] = useState(0);
-  const [analyticsSwitch, setAnalyticsSwitch] = useState(false);
-  const [appointmentsSwitch, setAppointmentsSwitch] = useState(false);
-  const [detailsSwitch, setDetailsSwitch] = useState(false);
 
   const navigate = useNavigate();
 
@@ -225,7 +222,7 @@ const SideNavBar = () => {
         </ListItem>
       </List>
       <div className="mt-auto">
-        <DigitalClock  />
+        <DigitalClock />
       </div>
     </Card>
   );

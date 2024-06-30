@@ -3,7 +3,6 @@ import { ThemeContext } from '../../../contexts/ThemeContext';
 import HeaderBar from '../Header/Header';
 import SideNavBar from '../SideNavBar/SideNavBar';
 
-
 const Settings = () => {
   const { theme, toggleTheme } = useContext(ThemeContext);
 
@@ -12,19 +11,26 @@ const Settings = () => {
       <SideNavBar />
       <div className="flex flex-col flex-1">
         <HeaderBar />
-    <div className="p-4">
-      <h2 className="mb-4 text-2xl font-bold">Settings</h2>
-      <div className="flex items-center">
-        <span className="mr-2">Theme:</span>
-        <button
-          onClick={toggleTheme}
-          className="px-4 py-2 font-semibold text-white transition-colors duration-300 bg-blue-500 rounded-md hover:bg-blue-600"
-        >
-          Switch to {theme === 'light' ? 'Dark' : 'Light'} Theme
-        </button>
+        <div className="flex items-center justify-center flex-1 p-4">
+          <div className="space-y-8">
+            <h2 className="mb-8 text-4xl font-bold text-center">Select Theme</h2>
+            <div className="flex space-x-8">
+              <button
+                onClick={() => theme !== 'light' && toggleTheme()}
+                className={`w-48 h-48 text-2xl font-bold text-white transition-transform transform rounded-full bg-blue-500 hover:bg-blue-600 hover:scale-105 ${theme === 'light' ? 'animate-pulse' : ''}`}
+              >
+                Light Theme
+              </button>
+              <button
+                onClick={() => theme !== 'dark' && toggleTheme()}
+                className={`w-48 h-48 text-2xl font-bold text-white transition-transform transform rounded-full bg-gray-800 hover:bg-gray-900 hover:scale-105 ${theme === 'dark' ? 'animate-pulse' : ''}`}
+              >
+                Dark Theme
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-    </div>
     </div>
   );
 };
