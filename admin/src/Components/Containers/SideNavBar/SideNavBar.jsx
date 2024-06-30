@@ -66,13 +66,13 @@ const SideNavBar = () => {
           De - Manager
         </Typography>
       </div>
-      <List>
+      <List className="">
         <ListItem 
           onClick={ScheduleAppointmentNav}
-          className="mb-4 text-white transition duration-300 bg-blue-500 rounded-lg cursor-pointer hover:bg-blue-600"
+          className="mb-4 text-white transition duration-300 bg-blue-500 rounded-lg cursor-pointer hover:bg-blue-600 "
         >
           <ListItemPrefix>
-            <CalendarIcon className="w-5 h-5 text-white" />
+            <CalendarIcon className="w-5 h-5 mr-5 text-white" />
           </ListItemPrefix>
           Schedule Appointment
         </ListItem>
@@ -93,7 +93,7 @@ const SideNavBar = () => {
               className="p-3 border-b-0"
             >
               <ListItemPrefix>
-                <PresentationChartBarIcon className="w-5 h-5" />
+                <PresentationChartBarIcon className="w-5 h-5 mr-5" />
               </ListItemPrefix>
               <Typography onClick={DashboardNav} color="blue-gray" className="mr-auto text-base">
                 Dashboard
@@ -120,7 +120,7 @@ const SideNavBar = () => {
                 </ListItem>
                 <ListItem>
                   <ListItemPrefix>
-                    <ChevronRightIcon strokeWidth={3} className="w-5 h-3" />
+                    <ChevronRightIcon strokeWidth={3} className="w-5 h-3 " />
                   </ListItemPrefix>
                   <Typography color="blue-gray" className="mr-auto">
                     Appointments
@@ -169,7 +169,7 @@ const SideNavBar = () => {
               className="p-3 border-b-0"
             >
               <ListItemPrefix>
-                <ShoppingBagIcon className="w-5 h-5" />
+                <ShoppingBagIcon className="w-5 h-5 mr-5" />
               </ListItemPrefix>
               <Typography color="blue-gray" className="mr-auto font-normal">
                 Scheduled Events
@@ -198,7 +198,7 @@ const SideNavBar = () => {
         <hr className="my-2 border-blue-gray-50" />
         <ListItem>
           <ListItemPrefix>
-            <InboxIcon className="w-5 h-5" />
+            <InboxIcon className="w-5 h-5 mr-5" />
           </ListItemPrefix>
           Requests
           <ListItemSuffix>
@@ -213,19 +213,19 @@ const SideNavBar = () => {
         </ListItem>
         <ListItem>
           <ListItemPrefix>
-            <UserCircleIcon className="w-5 h-5" />
+            <UserCircleIcon className="w-5 h-5 mr-5" />
           </ListItemPrefix>
           Profile
         </ListItem>
         <ListItem onClick={SettingsNav}>
           <ListItemPrefix>
-            <Cog6ToothIcon className="w-5 h-5" />
+            <Cog6ToothIcon className="w-5 h-5 mr-5" />
           </ListItemPrefix>
           Settings
         </ListItem>
         <ListItem>
           <ListItemPrefix>
-            <PowerIcon className="w-5 h-5" />
+            <PowerIcon className="w-5 h-5 mr-5" />
           </ListItemPrefix>
           Log Out
         </ListItem>
