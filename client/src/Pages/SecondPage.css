@@ -1,21 +1,37 @@
+/* .second-pg {
+    background-color: white;
+} */
+
+.PageTitle {
+    font-size: 2rem;
+    font-weight: 500;
+    margin: 1rem;
+
+}
+
 .sepgs {
     display: flex;
     flex-direction: row;
-    gap: 2rem;
+    gap: 3rem;
     margin: 2rem 2rem;
+}
+
+.sepgImg img{
+    height: 400px;
+    width: 650px;
 }
 
 .sepgContent {
     font-size: 20px;
-    font-weight: 300;
+    font-weight: 400;
 }
 
 .pageBtn {
-    margin: 3rem 0;
-    padding: 0.5rem 2.5rem;
+    margin: 2rem 0;
+    padding: 0.5rem 3rem;
     border: none;
     border-radius: 2rem;
-    background: rgb(170, 229, 155);
-    font-size: 1rem;
+    background: rgb(3, 3, 95);
+    font-size: 1.5rem;
 }
 
