@@ -1,33 +1,28 @@
 import React from 'react';
-import { isToday } from 'date-fns';
-import events from '../../../assets/Data/EventsData';
 
-const Appointments = ({ className }) => {
-  // Filter events to show only today's events
-  const todayEvents = events.filter(event => isToday(new Date(event.start)));
-
+const Appointments = ({ className, onSelectAppointment, appointments, completedAppointments }) => {
   return (
-    <div className={`mx-1 bg-custom-light-blue rounded-xl p-4 ${className} w-2/5`}>
-      <p className='text-xl font-semibold text-gray-800'>Appointments Today</p>
-      {todayEvents.length === 0 ? (
-        <p className='mt-3 text-gray-600'>No events scheduled for today.</p>
-      ) : (
-        <div className="mt-4 space-y-3 overflow-y-auto h-96 ">
-          {todayEvents.map(event => (
-            <div key={event.id} className="flex items-center p-3 bg-white rounded-lg shadow-md hover:bg-gray-100">
-              <div className="flex items-center justify-center flex-shrink-0 w-12 h-12 bg-blue-500 rounded-full">
-                <span className="text-lg font-semibold text-white">{event.title.charAt(0)}</span>
+    <div className={`mx-1 bg-custom-light-blue rounded-xl p-4 ${className}`}>
+      <h2 className='text-xl font-semibold text-gray-800'>Appointments</h2>
+      <ul className="mt-4 space-y-2">
+        {appointments.map((appointment) => (
+          <li
+            key={appointment.id}
+            className={`relative p-4 rounded-xl cursor-pointer bg-white`}
+            onClick={() => onSelectAppointment(appointment)}
+          >
+            {completedAppointments.includes(appointment.id) && (
+              <div className="absolute px-2 py-1 text-xs font-semibold text-white bg-green-500 rounded top-2 right-2">
+                Completed
               </div>
-              <div className="ml-4">
-                <h3 className="text-lg font-semibold text-gray-800">{event.title}</h3>
-                <p className="text-sm text-gray-600">{new Date(event.start).toLocaleString()}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      )}
+            )}
+            <h3 className='text-lg font-semibold text-gray-800'>{appointment.title}</h3>
+            <p className='text-sm text-gray-600'>{new Date(appointment.start).toLocaleString()}</p>
+          </li>
+        ))}
+      </ul>
     </div>
   );
-}
+};
 
 export default Appointments;

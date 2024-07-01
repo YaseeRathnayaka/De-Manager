@@ -6,7 +6,6 @@ import HeaderBar from '../../Containers/Header/Header';
 import SideNavBar from '../../Containers/SideNavBar/SideNavBar';
 import events from '../../../assets/Data/EventsData'; // Adjust this import based on your project structure
 
-// Set up the localizer by providing the moment (or globalize) Object
 const localizer = momentLocalizer(moment);
 
 const CalendarView = () => {
@@ -47,6 +46,8 @@ const CalendarView = () => {
             <p><strong>Start:</strong> {new Date(selectedEvent.start).toLocaleString()}</p>
             <p><strong>End:</strong> {new Date(selectedEvent.end).toLocaleString()}</p>
             <p><strong>Description:</strong> {selectedEvent.description}</p>
+            <p><strong>Vehicle Number:</strong> {selectedEvent.vehicleNumber}</p>
+            <p><strong>Customer Service:</strong> {selectedEvent.customerService}</p>
             <button
               onClick={closePanel}
               className="px-4 py-2 mt-4 text-white bg-blue-500 rounded"
