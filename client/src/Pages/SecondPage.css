@@ -42,13 +42,15 @@
 }
 
 
-.sepgs-02 {
+.sepgs-01 {
     display: flex;
     flex-direction: row;
     gap: 1rem;
    
 }
 
-.sepgImg1 {
-    
+.sepgs-01 img {
+    margin: 2rem 1.2rem;
+    height: 250px;
+    width: 315px;
 }

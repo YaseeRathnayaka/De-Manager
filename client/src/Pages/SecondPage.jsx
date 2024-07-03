@@ -21,7 +21,7 @@ const SecondPage = () => {
         </div>
 
         <span className="PageTitle-01">Our Greateness....</span>
-        <div className='sepgs-02'>
+        <div className='sepgs-01'>
         <div className="sepgImg1"> <img src={pic1} alt="" /></div>
         <div className="sepgImg1"> <img src={pic2} alt="" /></div>
         <div className="sepgImg1"> <img src={pic3} alt="" /></div>
