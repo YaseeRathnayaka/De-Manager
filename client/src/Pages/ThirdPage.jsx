@@ -148,7 +148,7 @@ const styles = {
         display: 'block',
         width: '100%',
         padding: '15px',
-        backgroundColor: '#4CAF50',
+        backgroundColor: '#19B5FE',
         color: 'white',
         border: 'none',
         borderRadius: '5px',
