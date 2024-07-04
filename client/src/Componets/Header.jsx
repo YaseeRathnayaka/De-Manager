@@ -2,6 +2,48 @@ import React, { useState } from 'react';
 import logo from '../assets/header/logo.png'; 
 import userIcon from '../assets/header/prof.png'; 
 
+const Header = () => {
+  const [hoveredIndex, setHoveredIndex] = useState(null);
+  const [activeIndex, setActiveIndex] = useState(null);
+
+  const navItems = [
+    { text: 'Our services', href: '#services' },
+    { text: 'About Us', href: '#about' },
+    { text: 'Feedbacks', href: '#feedbacks' },
+    { text: 'Contact Us', href: '#contact' },
+  ];
+
+  return (
+    <header style={styles.header}>
+      <div style={styles.navContainer}>
+        <img src={logo} alt="Logo" style={styles.logo} />
+        <nav style={styles.nav}>
+          <ul style={styles.navList}>
+            {navItems.map((item, index) => (
+              <li key={index} style={styles.navItem}>
+                <a
+                  href={item.href}
+                  style={{
+                    ...styles.navLink,
+                    ...(hoveredIndex === index && styles.navLinkHover),
+                    ...(activeIndex === index && styles.navLinkActive),
+                  }}
+                  onMouseEnter={() => setHoveredIndex(index)}
+                  onMouseLeave={() => setHoveredIndex(null)}
+                  onClick={() => setActiveIndex(index)}
+                >
+                  {item.text}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+        <img src={userIcon} alt="User Icon" style={styles.userIcon} />
+      </div>
+    </header>
+  );
+};
+
 const styles = {
   header: {
     backgroundColor: '#1B1212',
@@ -65,48 +107,6 @@ const styles = {
     marginRight: '50px',
     borderRadius: '50px',
   },
-};
-
-const Header = () => {
-  const [hoveredIndex, setHoveredIndex] = useState(null);
-  const [activeIndex, setActiveIndex] = useState(null);
-
-  const navItems = [
-    { text: 'Our services', href: '#services' },
-    { text: 'About Us', href: '#about' },
-    { text: 'Feedbacks', href: '#feedbacks' },
-    { text: 'Contact Us', href: '#contact' },
-  ];
-
-  return (
-    <header style={styles.header}>
-      <div style={styles.navContainer}>
-        <img src={logo} alt="Logo" style={styles.logo} />
-        <nav style={styles.nav}>
-          <ul style={styles.navList}>
-            {navItems.map((item, index) => (
-              <li key={index} style={styles.navItem}>
-                <a
-                  href={item.href}
-                  style={{
-                    ...styles.navLink,
-                    ...(hoveredIndex === index && styles.navLinkHover),
-                    ...(activeIndex === index && styles.navLinkActive),
-                  }}
-                  onMouseEnter={() => setHoveredIndex(index)}
-                  onMouseLeave={() => setHoveredIndex(null)}
-                  onClick={() => setActiveIndex(index)}
-                >
-                  {item.text}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </nav>
-        <img src={userIcon} alt="User Icon" style={styles.userIcon} />
-      </div>
-    </header>
-  );
 };
 
 export default Header;
