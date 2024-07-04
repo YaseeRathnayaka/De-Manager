@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import logo from '../assets/background1.jpg'; 
-import userIcon from '../assets/background2.jpg'; 
+import logo from '../assets/header/logo.png'; 
+import userIcon from '../assets/header/prof.png'; 
 
 const styles = {
   header: {
@@ -8,7 +8,6 @@ const styles = {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    padding: '1rem',
   },
   navContainer: {
     display: 'flex',
@@ -17,8 +16,9 @@ const styles = {
     maxWidth: '100%',
   },
   logo: {
-    height: '50px',
-    marginRight: 'auto',
+    height: '90px',
+    width: '120px', 
+    marginLeft: '50px',
   },
   nav: {
     flexGrow: 1,
@@ -51,9 +51,9 @@ const styles = {
     backgroundColor: '#19B5FE',
   },
   userIcon: {
-    height: '60px',
+    height: '50px',
     width: '60px',
-    marginLeft: 'auto',
+    marginRight: '50px',
     borderRadius: '50px',
   },
 };
