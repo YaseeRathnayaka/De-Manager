@@ -1,6 +1,11 @@
 import React from 'react';
 import './SecondPage.css';
 import image from '../assets/image1.jpg';
+import pic1 from '../assets/image2.jpg';
+import pic2 from '../assets/image3.jpg';
+import pic3 from '../assets/image4.jpg';
+import pic4 from '../assets/image5.jpg';
+import pic5 from '../assets/image6.jpg';
 
 const SecondPage = () => {
   return (
@@ -15,6 +20,16 @@ const SecondPage = () => {
                 <button className="pageBtn">Book Your Day Here.......</button>
             </div>
         </div>
+
+        <span className="PageTitle-01">Our Greateness....</span>
+        <div className="bg"> <img src={pic5} alt="" /></div>
+        <div className='sepgs-01'>
+        <div className="sepgImg1"> <img src={pic1} alt="" /></div>
+        <div className="sepgImg1"> <img src={pic2} alt="" /></div>
+        <div className="sepgImg1"> <img src={pic3} alt="" /></div>
+        <div className="sepgImg1"> <img src={pic4} alt="" /></div>
+        </div>
+
     </section>
   )
 }
