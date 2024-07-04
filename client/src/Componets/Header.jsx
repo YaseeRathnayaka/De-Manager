@@ -4,7 +4,7 @@ import userIcon from '../assets/background2.jpg';
 
 const styles = {
   header: {
-    backgroundColor: 'transparent',
+    backgroundColor: '#1B1212',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
@@ -47,14 +47,14 @@ const styles = {
     backgroundColor: '#19B5FE',
   },
   navLinkActive: {
-    color: '#19B5FE',
+    color: 'white',
     backgroundColor: '#19B5FE',
   },
   userIcon: {
     height: '60px',
     width: '60px',
     marginLeft: 'auto',
-    borderRadius:'50px',
+    borderRadius: '50px',
   },
 };
 
