@@ -86,7 +86,7 @@ const styles = {
   },
   navLink: {
     textDecoration: 'none',
-    color: '#19B5FE',
+    color: 'white',
     fontSize: '1.2rem',
     border: '2px solid transparent',
     padding: '0.5rem 1rem',
