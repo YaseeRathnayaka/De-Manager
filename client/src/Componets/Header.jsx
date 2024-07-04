@@ -5,9 +5,18 @@ import userIcon from '../assets/header/prof.png';
 const styles = {
   header: {
     backgroundColor: '#1B1212',
+    position: 'fixed', // Add this line
+    top: 0, // Add this line
+    width: '100%', // Add this line
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
+    zIndex: 1000,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    position: 'fixed', 
+    
   },
   navContainer: {
     display: 'flex',
