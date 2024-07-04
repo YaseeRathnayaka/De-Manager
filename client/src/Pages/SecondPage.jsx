@@ -10,6 +10,7 @@ import pic5 from '../assets/image6.jpg';
 const SecondPage = () => {
   return (
     <section id='second-pg'>
+      <div className='second-page'>
          <span className="PageTitle">Straight in to Services....</span>
         <div className="sepgs">
             <div className="sepgImg"> <img src={image} alt="" /></div>
@@ -20,18 +21,62 @@ const SecondPage = () => {
                 <button className="pageBtn">Book Your Day Here.......</button>
             </div>
         </div>
+        </div>
 
         <span className="PageTitle-01">Our Greateness....</span>
+        <div className='sec2'>
         <div className="bg"> <img src={pic5} alt="" /></div>
         <div className='sepgs-01'>
-        <div className="sepgImg1"> <img src={pic1} alt="" /></div>
-        <div className="sepgImg1"> <img src={pic2} alt="" /></div>
-        <div className="sepgImg1"> <img src={pic3} alt="" /></div>
-        <div className="sepgImg1"> <img src={pic4} alt="" /></div>
+        <div className="projectContent">
+           <p><h2>Expert Technicians</h2></p>
+           <p>Highly trained and certified professionals.</p>
+           <p>Continual education on the latest automotive technologies.</p>
+           <p>Ability to diagnose and fix issues quickly and accurately.</p>
+           <p>Dedicated to providing top-quality service for all vehicle makes and models.</p>
         </div>
+        <div className="projectContent">
+           <p><h2>Comprehensive Services</h2></p>
+           <p>Offers a wide range of services from oil changes to major repairs.</p>
+           <p>Equipped with state-of-the-art tools and equipment.</p>
+           <p>Provides preventative maintenance to avoid future issues.</p>
+           <p>Ensures that all work meets or exceeds industry standards.</p>
+        </div>
+        <div className="projectContent">
+           <p><h2>Customer-Centric Approach</h2></p>
+           <p>Friendly and approachable staff ready to assist.</p>
+           <p>Clear communication regarding repair needs and costs.</p>
+           <p>Comfortable waiting area with amenities for customers.</p>
+           <p>Commitment to timely and efficient service delivery.</p>
+        </div>
+        <div className="projectContent">
+           <p><h2>Transparent Pricing</h2></p>
+           <p>Provides detailed estimates before work begins.</p>
+           <p>No hidden fees or unexpected charges.</p>
+           <p>Competitive pricing matched with high-quality service.</p>
+           <p>Offers various payment options and financing plans.</p>
+        </div>
+        </div>
+        </div>
+
 
     </section>
   )
 }
 
 export default SecondPage;
+
+
+
+
+
+
+
+
+
+
+
+
+ {/* <div className="sepgImg1"> <img src={pic1} alt="" /></div>
+        <div className="sepgImg1"> <img src={pic2} alt="" /></div>
+        <div className="sepgImg1"> <img src={pic3} alt="" /></div>
+        <div className="sepgImg1"> <img src={pic4} alt="" /></div> */}
