@@ -46,13 +46,17 @@
     border-radius: 1rem;
     transition: all 0.3s;
   }
+  .navLink:hover {
+    color: white; /* Hover color */
+    background-color: #19B5FE; /* Hover background color */
+  }
   
-  .navLinkHover {
+  .navLinkActive {
     color: white;
     background-color: #19B5FE;
   }
   
-  .navLinkActive {
+  .navLinkHover {
     color: white;
     background-color: #19B5FE;
   }
@@ -89,10 +93,13 @@
   }
   
 
-  @media (max-width: 816px) {
+  @media (max-width: 975px) {
     .navItem {
-      margin: 5px; 
+      margin: 5px;    
     }
+    .navLink {
+        font-size: 18px;
+      }
   }
   
 
