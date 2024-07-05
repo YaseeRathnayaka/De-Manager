@@ -17,8 +17,7 @@
   }
   
   .logo {
-    height: 90px;
-    width: 120px;
+    width: 100px;
   }
   
   .nav {
@@ -42,28 +41,20 @@
     color: white;
     font-size: 20px;
     border: 2px solid transparent;
-    padding: 10px;
+    padding: 8px;
     border-radius: 1rem;
     transition: all 0.3s;
   }
-  .navLink:hover {
-    color: white; /* Hover color */
-    background-color: #19B5FE; /* Hover background color */
-  }
   
+  .navLink:hover,
   .navLinkActive {
     color: white;
     background-color: #19B5FE;
   }
   
-  .navLinkHover {
-    color: white;
-    background-color: #19B5FE;
-  }
-  
   .userIcon {
-    height: 50px;
-    width: 60px;
+    height: 70px;
+    width: 70px;
     margin-right: 50px;
     border-radius: 50px;
   }
@@ -80,27 +71,25 @@
     }
   
     .logo {
-      height: 70px;
-      width: 100px;
-      margin-left: 30px;
+      height: 150px;
+      width: 150px;
+      margin-left: 20px;
     }
   
     .userIcon {
-      height: 40px;
-      width: 50px;
-      margin-right: 30px;
+      height: 100px;
+      width: 100px;
+      margin-right: 20px;
     }
   }
   
-
-  @media (max-width: 975px) {
+  /* Media query for medium-sized screens */
+  @media (min-width: 781px) and (max-width: 975px) {
     .navItem {
       margin: 5px;    
     }
     .navLink {
-        font-size: 18px;
-      }
+      font-size: 18px;
+    }
   }
-  
-
   
