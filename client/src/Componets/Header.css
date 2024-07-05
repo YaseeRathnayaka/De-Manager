@@ -1,0 +1,108 @@
+.header {
+    background-color: #1B1212;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    padding: 1rem;
+  }
+  
+  .navContainer {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 100%;
+    padding: 0 1rem;
+  }
+  
+  .logo {
+    height: 90px;
+    width: 120px;
+    margin-left: 50px;
+  }
+  
+  .nav {
+    flex-grow: 1;
+  }
+  
+  .navList {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .navItem {
+    margin: 0 1rem;
+  }
+  
+  .navLink {
+    text-decoration: none;
+    color: white;
+    font-size: 1.2rem;
+    border: 2px solid transparent;
+    padding: 0.5rem 1rem;
+    border-radius: 1rem;
+    transition: all 0.3s;
+  }
+  
+  .navLinkHover {
+    color: white;
+    background-color: #19B5FE;
+  }
+  
+  .navLinkActive {
+    color: white;
+    background-color: #19B5FE;
+  }
+  
+  .userIcon {
+    height: 50px;
+    width: 60px;
+    margin-right: 50px;
+    border-radius: 50px;
+  }
+  
+  @media (max-width: 768px) {
+    .navList {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .navItem {
+      margin: 0.5rem 0;
+    }
+  
+    .logo {
+      height: 70px;
+      width: 100px;
+      margin-left: 20px;
+    }
+  
+    .userIcon {
+      height: 40px;
+      width: 50px;
+      margin-right: 20px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .navContainer {
+      flex-direction: column;
+      align-items: center;
+      padding: 0.5rem;
+    }
+  
+    .logo {
+      margin-left: 0;
+    }
+  
+    .userIcon {
+      margin-right: 0;
+    }
+  }
+  
