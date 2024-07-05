@@ -1,62 +1,6 @@
 import React, { useState } from 'react';
-import logo from '../assets/background1.jpg'; 
-import userIcon from '../assets/background2.jpg'; 
-
-const styles = {
-  header: {
-    backgroundColor: 'transparent',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    padding: '1rem',
-  },
-  navContainer: {
-    display: 'flex',
-    alignItems: 'center',
-    width: '100%',
-    maxWidth: '100%',
-  },
-  logo: {
-    height: '50px',
-    marginRight: 'auto',
-  },
-  nav: {
-    flexGrow: 1,
-  },
-  navList: {
-    listStyle: 'none',
-    display: 'flex',
-    justifyContent: 'center',
-    padding: '0',
-    margin: '0',
-  },
-  navItem: {
-    margin: '0 1rem',
-  },
-  navLink: {
-    textDecoration: 'none',
-    color: '#19B5FE',
-    fontSize: '1.2rem',
-    border: '2px solid transparent',
-    padding: '0.5rem 1rem',
-    borderRadius: '1rem',
-    transition: 'all 0.3s',
-  },
-  navLinkHover: {
-    color: 'white',
-    backgroundColor: '#19B5FE',
-  },
-  navLinkActive: {
-    color: '#19B5FE',
-    backgroundColor: '#19B5FE',
-  },
-  userIcon: {
-    height: '60px',
-    width: '60px',
-    marginLeft: 'auto',
-    borderRadius:'50px',
-  },
-};
+import logo from '../assets/header/logo.png'; 
+import userIcon from '../assets/header/prof.png'; 
 
 const Header = () => {
   const [hoveredIndex, setHoveredIndex] = useState(null);
@@ -98,6 +42,71 @@ const Header = () => {
       </div>
     </header>
   );
+};
+
+const styles = {
+  header: {
+    backgroundColor: '#1B1212',
+    position: 'fixed', // Add this line
+    top: 0, // Add this line
+    width: '100%', // Add this line
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    zIndex: 1000,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    position: 'fixed', 
+    
+  },
+  navContainer: {
+    display: 'flex',
+    alignItems: 'center',
+    width: '100%',
+    maxWidth: '100%',
+  },
+  logo: {
+    height: '90px',
+    width: '120px', 
+    marginLeft: '50px',
+  },
+  nav: {
+    flexGrow: 1,
+  },
+  navList: {
+    listStyle: 'none',
+    display: 'flex',
+    justifyContent: 'center',
+    padding: '0',
+    margin: '0',
+  },
+  navItem: {
+    margin: '0 1rem',
+  },
+  navLink: {
+    textDecoration: 'none',
+    color: 'white',
+    fontSize: '1.2rem',
+    border: '2px solid transparent',
+    padding: '0.5rem 1rem',
+    borderRadius: '1rem',
+    transition: 'all 0.3s',
+  },
+  navLinkHover: {
+    color: 'white',
+    backgroundColor: '#19B5FE',
+  },
+  navLinkActive: {
+    color: 'white',
+    backgroundColor: '#19B5FE',
+  },
+  userIcon: {
+    height: '50px',
+    width: '60px',
+    marginRight: '50px',
+    borderRadius: '50px',
+  },
 };
 
 export default Header;
