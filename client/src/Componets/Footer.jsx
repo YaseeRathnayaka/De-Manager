@@ -1,13 +1,14 @@
 import React from 'react';
 import './Footer.css';
 import { FaFacebook, FaInstagram, FaLinkedin, FaYoutube } from 'react-icons/fa';
+import logo from '../assets/header/logo.png'; 
 
 const Footer = () => {
   return (
     <footer className="footer">
       <div className="footer-container">
         <div className="footer-logo">
-          <img src="logo.png" alt="BMW Logo" className="logo-image" />
+          <img src={logo} alt="BMW Logo" className="logo-image" />
           <p>All rights reserved by BMW motors pvt(Ltd)</p>
         </div>
         <div className="footer-info">
