@@ -16,7 +16,7 @@ const Footer = () => {
           <p>100, Hyde Park Corner, Colombo 2.<br />Sri Lanka</p>
           <p>+94 11 4797200</p>
           <a href="mailto:web@unitedmotors.lk">web@unitedmotors.lk</a>
-          <p>Follow us</p>
+          <h3>Follow us</h3>
           <div className="social-icons">
             <a href="https://www.facebook.com" className="social-icon"><FaFacebook /></a>
             <a href="https://www.instagram.com" className="social-icon"><FaInstagram /></a>
