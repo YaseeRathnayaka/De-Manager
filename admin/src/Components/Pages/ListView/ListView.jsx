@@ -5,6 +5,8 @@ import SideNavBar from '../../Containers/SideNavBar/SideNavBar';
 import events from '../../../assets/Data/EventsData';
 
 const ListView = () => {
+
+  const today = new Date();
   // Filter events to only show those happening today
   const todayEvents = events.filter(event => isToday(new Date(event.start)));
 
@@ -13,7 +15,7 @@ const ListView = () => {
       <SideNavBar />
       <div className="flex flex-col flex-1 h-full">
         <HeaderBar />
-        <div className="flex-1 p-3 overflow-y-auto">
+        <div className="flex-1 p-3 ml-3 overflow-y-auto">
           <h2 className="mb-4 text-2xl">Today's Events</h2>
           {todayEvents.length === 0 ? (
             <p>No events scheduled for today.</p>
@@ -24,6 +26,14 @@ const ListView = () => {
                 <p><strong>Start:</strong> {format(new Date(event.start), 'PPpp')}</p>
                 <p><strong>End:</strong> {format(new Date(event.end), 'PPpp')}</p>
                 <p><strong>Description:</strong> {event.description}</p>
+                <p><strong>Vehicle Number:</strong> {event.vehicleNumber}</p>
+                <p><strong>Customer Service:</strong> {event.customerService}</p>
+                <button 
+                  className="mt-2 text-blue-500 underline"
+                  onClick={() => alert(`More details about ${event.title}...`)}
+                >
+                  More Details
+                </button>
               </div>
             ))
           )}

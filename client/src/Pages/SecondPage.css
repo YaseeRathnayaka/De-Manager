@@ -1,0 +1,102 @@
+.second-page {
+    background-color: white;
+    margin-top: 2rem;
+}
+
+.PageTitle {
+    font-size: 2rem;
+    font-weight: 500;
+    margin: 1rem 1rem;
+    color: black;
+
+}
+
+.sepgs {
+    display: flex;
+    flex-direction: row;
+    gap: 3rem;
+    margin: 2rem 2rem;
+}
+
+.sepgImg img{
+    height: 400px;
+    width: 650px;
+    border-radius: 0.5rem;
+}
+
+.sepgContent {
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.sepgContent p {
+    color: black;
+}
+
+.btn .hover{
+    margin: 2rem 0;
+    padding: 0.5rem 2rem;
+    border: none;
+    border-radius: 2rem;
+    background: black;
+    color: white;
+    gap: 20px;
+}
+
+.pageBtn {
+    margin: 2rem 0;
+    padding: 0.5rem 3rem;
+    border: none;
+    border-radius: 2rem;
+    background: rgb(3, 3, 95);
+    font-size: 1.5rem;
+}
+
+.sec2 {
+    margin-top: 1rem;
+    margin-bottom: 2.5rem;
+}
+
+.bg img {
+    width: 1500px;
+    height: 470px;
+    opacity: 30%;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.PageTitle-01 {
+    font-size: 2rem;
+    font-weight: 500;
+    margin: 1rem; 
+}
+
+
+.sepgs-01 {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+    margin-top: -29.75rem;
+}
+
+.sepgs-01 img {
+    margin: 2rem 1.2rem;
+    height: 250px;
+    width: 315px;
+    border-radius: 1rem;
+}
+
+.projectContent {
+    gap: 20px;
+    margin: 0.8rem;
+    padding: 1.5rem 2rem;
+    border-radius: 0.5rem;
+    background: rgb(0, 0, 0);
+    font-size: 1rem;
+    font-weight: 500;
+    width: 20%;
+    text-align: left;
+    /* margin-left: 0%;
+    margin-right: 0%; */
+}
+

@@ -1,3 +1,40 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Default (light mode) theme */
+:root {
+  --bg-color: #ffffff;
+  --text-color: #000000;
+  --header-bg-color: #E6E6E6;
+  --header-text-color: #212529;
+  --card-bg-color: #B8B7CF;
+  --card-text-color: #212529;
+}
+
+/* Dark mode theme */
+.dark {
+  --bg-color: #181818;
+  --text-color: #e0e0e0;
+  --header-bg-color: #212529;
+  --header-text-color: #f8f9fa;
+  --card-bg-color: #282828;
+  --card-text-color: #e0e0e0;
+}
+
+/* Apply theme colors to global styles */
+html, body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+/* Example component styles */
+.header {
+  background-color: var(--header-bg-color);
+  color: var(--header-text-color);
+}
+
+.sidenav {
+  background-color: var(--card-bg-color);
+  color: var(--card-text-color);
+}

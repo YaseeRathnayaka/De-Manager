@@ -1,7 +1,18 @@
-export default function App() {
+import './App.css';
+import FirstPage from './Pages/FirstPage';
+import SecondPage from './Pages/SecondPage';
+import ThirdPage from './Pages/ThirdPage';
+import Header from './Componets/Header';
+
+function App() {
   return (
-    <h1 className="text-3xl font-bold underline">
-      Hello world!
-    </h1>
-  )
+    <div>
+      <Header />
+      <FirstPage />
+      <SecondPage />
+      <ThirdPage />
+    </div>
+  );
 }
+
+export default App;

@@ -10,6 +10,8 @@ export default {
         'custom-gray': '#E6E6E6',
         'custom-blue': '#B8B7CF',
         'custom-light-blue': '#DCE9F9',
+        'custom-clock': ' #1e293b',
+        'custom-clock-text': '#ffffff',
       },
     },
   },
