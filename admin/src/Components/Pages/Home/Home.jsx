@@ -5,7 +5,7 @@ import TopCards from '../../Containers/TopCards/TopCards';
 import Feedback from '../../Containers/Feedback/Feedback';
 import Appointments from '../../Containers/Appointments/Appoitments';
 import AppointmentDetails from '../../Containers/AppointmentDetails/AppointmentDetails';
-import events from '../../../assets/Data/EventsData'; // Replace with your actual events data import
+import events from '../../../assets/Data/EventsData'; 
 import { isSameDay } from 'date-fns';
 
 const Home = () => {
