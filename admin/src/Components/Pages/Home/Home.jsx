@@ -7,6 +7,7 @@ import Appointments from '../../Containers/Appointments/Appoitments';
 import AppointmentDetails from '../../Containers/AppointmentDetails/AppointmentDetails';
 import events from '../../../assets/Data/EventsData'; // Replace with your actual events data import
 import { isSameDay } from 'date-fns';
+import axios from 'axios';
 
 const Home = () => {
   const [analyticsSwitch, setAnalyticsSwitch] = useState(true);
@@ -14,6 +15,8 @@ const Home = () => {
   const [detailsSwitch, setDetailsSwitch] = useState(true);
   const [selectedAppointment, setSelectedAppointment] = useState(null);
   const [completedAppointments, setCompletedAppointments] = useState([]);
+  const [data, setData] = useState([])
+  const [todayEvents, setTodayEvents] = useState([]);
 
   const calculateWidth = () => {
     const activeComponents = [analyticsSwitch, appointmentsSwitch, detailsSwitch].filter(Boolean).length;
@@ -28,8 +31,33 @@ const Home = () => {
   // Get today's date
   const today = new Date();
 
+  useEffect(() => {
+    const fetchdata = async () => {
+      try {
+        const token = localStorage.getItem("token")
+        const response = await axios.get('http://localhost:3000/api/appointment/all',{
+          headers: {
+            "x-auth-token" : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjhhMjc4NTU2NTc2NTQxMmNiMmFkNzEiLCJpYXQiOjE3MjAzMzA2MzN9.lm4edYXkkMAU5ffumtEeNAJLnrJfG-J0qu1h_QMZeds"
+          }
+        })
+        console.log(response.data);
+        setData(response.data)
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    fetchdata()
+  },[])
+
+  useEffect(() => {
+    const today = new Date();
+    const filteredEvents = data.filter((event) => isSameDay(new Date(event.preferredDate), today));
+    setTodayEvents(filteredEvents);
+    console.log(todayEvents)
+  }, [data]);
+
   // Filter events to get today's appointments
-  const todayEvents = events.filter((event) => isSameDay(new Date(event.start), today));
+  // const todayEvents = events.filter((event) => isSameDay(new Date(event.start), today));
 
   // Handle completion of an appointment
   const handleCompleteAppointment = (appointmentId) => {
