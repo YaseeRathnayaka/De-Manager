@@ -4,7 +4,7 @@ import moment from 'moment';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import HeaderBar from '../../Containers/Header/Header';
 import SideNavBar from '../../Containers/SideNavBar/SideNavBar';
-import events from '../../../assets/Data/EventsData'; // Adjust this import based on your project structure
+import events from '../../../assets/Data/EventsData'; 
 
 const localizer = momentLocalizer(moment);
 
