@@ -1,17 +1,17 @@
 const express = require('express')
 const mongoose = require('mongoose')
-const users = require('./routes/users')
-const auth = require('./routes/login')
+const userRoutes = require('./routes/userRoutes')
 const cors = require('cors')
-const appointment = require('./routes/appointments')
+const appointmentsRoutes = require('./routes/appointmentsRoutes')
+const loginRoute = require('./routes/loginRoute')
 
 const app = express();
 app.use(cors())
 app.use(express.json())
 
-app.use('/users', users)
-app.use('/auth', auth)
-app.use('/appointment', appointment)
+app.use('/api/users', userRoutes)
+app.use('/api/auth/login', loginRoute)
+app.use('/api/appointment', appointmentsRoutes)
 
 // export NODE_ENV=development
 if (app.get('env') === 'development') {
