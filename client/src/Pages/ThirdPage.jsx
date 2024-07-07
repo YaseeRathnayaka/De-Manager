@@ -37,27 +37,27 @@ const ThirdPage = () => {
             <div style={styles.section}>
                 <h3>VEHICLE DETAILS</h3>
                 <label style={styles.label}>
-                    Vehicle Make*:
+                    Vehicle Make :
                     <input type="text" name="vehicleMake" value={formData.vehicleMake} onChange={handleChange} required style={styles.input} />
                 </label>
                 <label style={styles.label}>
-                    Vehicle Model*:
+                    Vehicle Model :
                     <input type="text" name="vehicleModel" value={formData.vehicleModel} onChange={handleChange} required style={styles.input} />
                 </label>
                 <label style={styles.label}>
-                    Vehicle Number*:
+                    Vehicle Number :
                     <input type="text" name="vehicleNumber" value={formData.vehicleNumber} onChange={handleChange} required style={styles.input} />
                 </label>
                 <label style={styles.label}>
-                    Manufactured Year*:
+                    Manufactured Year :
                     <input type="text" name="manufacturedYear" value={formData.manufacturedYear} onChange={handleChange} required style={styles.input} />
                 </label>
                 <label style={styles.label}>
-                    Preferred Date*:
+                    Preferred Date :
                     <input type="date" name="preferredDate" value={formData.preferredDate} onChange={handleChange} required style={styles.input} />
                 </label>
                 <label style={styles.label}>
-                    Preferred Branch*:
+                    Preferred Branch :
                     <select name="preferredBranch" value={formData.preferredBranch} onChange={handleChange} required style={styles.input}>
                         <option value="">Balangoda</option>
                         <option value="">Kurunegala</option>
@@ -65,7 +65,7 @@ const ThirdPage = () => {
                     </select>
                 </label>
                 <label style={styles.label}>
-                    Preferred Time*:
+                    Preferred Time :
                     <input type="time" name="preferredTime" value={formData.preferredTime} onChange={handleChange} required style={styles.input} />
                 </label>
             </div>
@@ -73,23 +73,23 @@ const ThirdPage = () => {
             <div style={styles.section}>
                 <h3>OWNER’S DETAILS</h3>
                 <label style={styles.label}>
-                    Name*:
+                    Name :
                     <input type="text" name="name" value={formData.name} onChange={handleChange} required style={styles.input} />
                 </label>
                 <label style={styles.label}>
-                    E-mail*:
+                    E-mail :
                     <input type="email" name="email" value={formData.email} onChange={handleChange} required style={styles.input} />
                 </label>
                 <label style={styles.label}>
-                    Mobile Number*:
+                    Mobile Number :
                     <input type="tel" name="mobileNumber" value={formData.mobileNumber} onChange={handleChange} required style={styles.input} />
                 </label>
                 <label style={styles.label}>
-                    Address*:
+                    Address :
                     <input type="text" name="address" value={formData.address} onChange={handleChange} required style={styles.input} />
                 </label>
                 <label style={{ ...styles.label, ...styles.fullWidth }}>
-                    Message:
+                    Message :
                     <textarea name="message" value={formData.message} onChange={handleChange} style={styles.textarea} />
                 </label>
             </div>
@@ -148,7 +148,7 @@ const styles = {
         display: 'block',
         width: '100%',
         padding: '15px',
-        backgroundColor: '#4CAF50',
+        backgroundColor: '#19B5FE',
         color: 'white',
         border: 'none',
         borderRadius: '5px',
@@ -160,7 +160,8 @@ const styles = {
     header: {
         textAlign: 'center',
         marginBottom: '20px',
-        flex: '0 0 100%'
+        flex: '0 0 100%',
+        fontSize:'40px',
     }
 };
 

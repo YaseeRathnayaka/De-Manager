@@ -1,0 +1,96 @@
+.header {
+    background-color: #1B1212;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .navContainer {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 100%;
+  }
+  
+  .logo {
+    width: 85px;
+    height: 65px;
+  }
+  
+  .nav {
+    flex-grow: 1;
+  }
+  
+  .navList {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .navItem {
+    margin-right: 50px; /* Default margin */
+  }
+  
+  .navLink {
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+    border: 2px solid transparent;
+    padding: 8px;
+    border-radius: 1rem;
+    transition: all 0.3s;
+  }
+  
+  .navLink:hover,
+  .navLinkActive {
+    color: white;
+    background-color: #19B5FE;
+  }
+  
+  .userIcon {
+    height: 60px;
+    width: 60px;
+    margin-right: 50px;
+    border-radius: 50px;
+  }
+  
+  /* Media query for smaller screens */
+  @media (max-width: 780px) {
+    .navList {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .navItem {
+      margin: 10px; /* Decreased margin */
+    }
+  
+    .logo {
+      height: 100px;
+      width: 100px;
+      margin-left: 1px;
+    }
+  
+    .userIcon {
+      height: 80px;
+      width: 80px;
+      margin-right: 20px;
+    }
+  }
+  
+  /* Media query for medium-sized screens */
+  @media (min-width: 781px) and (max-width: 975px) {
+    .navItem {
+      margin: 5px;    
+    }
+    .navLink {
+      font-size: 18px;
+    }
+  }
+  
