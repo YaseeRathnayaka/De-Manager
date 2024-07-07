@@ -67,8 +67,7 @@ const serviceAppointmentSchema = new mongoose.Schema({
     },
     status: {
         type: String,
-        enum: ['Pending', 'Completed', 'Cancelled'],
-        default: 'Pending'
+        enum: ['Pending', 'Confirmed', 'Cancelled'],
     },
     serviceTypes: {
         type: [String],
@@ -87,7 +86,7 @@ function validateServiceAppointment(appointment) {
         email: Joi.string().email().required(),
         mobile: Joi.string().min(10).max(10).required(),
         address: Joi.string().required(),
-        NIC: Joi.string().required,
+        NIC: Joi.string().required(),
         vehicleNumber: Joi.string().required(),
         vehicleModel: Joi.string().required(),
         vehicleYear: Joi.number().required(),
