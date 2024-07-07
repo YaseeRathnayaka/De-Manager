@@ -17,6 +17,8 @@ const Home = () => {
   const [completedAppointments, setCompletedAppointments] = useState([]);
   const [data, setData] = useState([])
   const [todayEvents, setTodayEvents] = useState([]);
+  const [totalCompletedVehicles, setTotalCompletedVehicles] = useState([])
+  const [todayTotalCompletedVehicles, setTodayTotalCompletedVehicles] = useState([])
 
   const calculateWidth = () => {
     const activeComponents = [analyticsSwitch, appointmentsSwitch, detailsSwitch].filter(Boolean).length;
@@ -56,6 +58,16 @@ const Home = () => {
     console.log(todayEvents)
   }, [data]);
 
+  useEffect(() => {
+    const totalCompletedVehicles = data.filter((appointment) => appointment.isCompleted && isSameDay(new Date(appointment.preferredDate), today)).length;
+    setTodayTotalCompletedVehicles(totalCompletedVehicles)
+  }, [data]);
+
+  useEffect(() => {
+    const totalCompletedVehicles = data.filter((appointment) => appointment.isCompleted).length;
+    setTotalCompletedVehicles(totalCompletedVehicles)
+  }, [data]);
+
   // Filter events to get today's appointments
   // const todayEvents = events.filter((event) => isSameDay(new Date(event.start), today));
 
@@ -85,7 +97,7 @@ const Home = () => {
       />
       <div className="flex flex-col flex-1">
         <HeaderBar />
-        <TopCards totalAppointmentsToday={todayEvents.length} completedTodayCount={completedAppointments.length} totalAppointments={data.length}/>
+        <TopCards totalAppointmentsToday={todayEvents.length} completedTodayCount={todayTotalCompletedVehicles} totalVehicles={totalCompletedVehicles}/>
         <div className="flex flex-row mt-1 mb-5 ml-3 mr-3 h-4/5">
           {analyticsSwitch && (
             <Feedback className={`h-full ${widths.feedback || widths}`} />
