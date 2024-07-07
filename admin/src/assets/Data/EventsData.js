@@ -56,8 +56,8 @@ const events = [
   {
     appointment_id: 4,
     title: 'Brake Inspection abs3456',
-    start: new Date(2024, 6, 6, 10, 0), // July 6, 2024, 10:00 AM
-    end: new Date(2024, 6, 6, 12, 0), // July 6, 2024, 12:00 PM
+    start: new Date(2024, 6, 7, 10, 0), // July 6, 2024, 10:00 AM
+    end: new Date(2024, 6, 7, 12, 0), // July 6, 2024, 12:00 PM
     customerName: 'Emily Davis',
     email: 'emily.davis@example.com',
     mobile: '321-654-0987',
@@ -74,8 +74,8 @@ const events = [
   {
     appointment_id: 5,
     title: 'Battery Check abs3456',
-    start: new Date(2024, 6, 6, 10, 0), // July 6, 2024, 10:00 AM
-    end: new Date(2024, 6, 6, 12, 0), // July 6, 2024, 12:00 PM
+    start: new Date(2024, 6, 7, 10, 0), // July 6, 2024, 10:00 AM
+    end: new Date(2024, 6, 7, 12, 0), // July 6, 2024, 12:00 PM
     customerName: 'Chris Lee',
     email: 'chris.lee@example.com',
     mobile: '654-321-9870',

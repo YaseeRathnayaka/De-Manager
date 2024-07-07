@@ -1,4 +1,4 @@
-// src/contexts/AppointmentContext.js
+
 import React, { createContext, useState } from 'react';
 
 export const AppointmentContext = createContext();
