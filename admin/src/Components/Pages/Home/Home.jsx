@@ -85,7 +85,7 @@ const Home = () => {
       />
       <div className="flex flex-col flex-1">
         <HeaderBar />
-        <TopCards totalAppointmentsToday={todayEvents.length} completedTodayCount={completedAppointments.length} />
+        <TopCards totalAppointmentsToday={todayEvents.length} completedTodayCount={completedAppointments.length} totalAppointments={data.length}/>
         <div className="flex flex-row mt-1 mb-5 ml-3 mr-3 h-4/5">
           {analyticsSwitch && (
             <Feedback className={`h-full ${widths.feedback || widths}`} />

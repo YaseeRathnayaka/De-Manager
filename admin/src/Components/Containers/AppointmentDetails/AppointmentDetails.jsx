@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 
 const AppointmentDetails = ({ className, appointment, onCompleteAppointment }) => {
@@ -25,12 +26,34 @@ const AppointmentDetails = ({ className, appointment, onCompleteAppointment }) =
     );
   };
 
-  const handleMarkAsCompleted = () => {
+  const handleMarkAsCompleted = async () => {
+  try {
     if (servicesCompleted.length === appointment.serviceTypes.length) {
       onCompleteAppointment(appointment._id);
-      alert('Appointment marked as completed!');
+      console.log(appointment._id)
+      const token = localStorage.getItem("token");
+      
+      const response = await axios.put(`http://localhost:3000/api/appointment/${appointment._id}`, {
+        isCompleted: true,
+      }, {
+        headers: {
+          "x-auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjhhMjc4NTU2NTc2NTQxMmNiMmFkNzEiLCJpYXQiOjE3MjAzMzA2MzN9.lm4edYXkkMAU5ffumtEeNAJLnrJfG-J0qu1h_QMZeds"
+        }
+      });
+
+      if (response.status === 200) {
+        alert('Appointment marked as completed!');
+      } else {
+        console.error('Error marking appointment as completed:', response);
+      }
+    } else {
+      alert('Not all services are completed.');
     }
-  };
+  } catch (error) {
+    console.error('Error marking appointment as completed:', error);
+    alert('Failed to mark appointment as completed.');
+  }
+};
 
   return (
     <div className={`mx-1 bg-custom-light-blue rounded-xl p-4 ${className}`}>
@@ -50,17 +73,18 @@ const AppointmentDetails = ({ className, appointment, onCompleteAppointment }) =
       <ul className="mt-2 space-y-2">
         {appointment.serviceTypes.map((service, index) => (
           <li key={index} className="flex items-center">
-            <input
+          <input
               type="checkbox"
-              checked={servicesCompleted.includes(service)}
+              checked={appointment.isCompleted || servicesCompleted.includes(service)}
               onChange={() => toggleServiceCompletion(service)}
               className="form-checkbox"
+              disabled={appointment.isCompleted}
             />
             <span className="ml-2">{service}</span>
           </li>
         ))}
       </ul>
-      {servicesCompleted.length === appointment.serviceTypes.length && (
+      {servicesCompleted.length === appointment.serviceTypes.length && !appointment.isCompleted &&(
         <button
           className="w-full p-2 mt-4 text-white transition duration-300 bg-green-500 rounded-md hover:bg-green-600"
           onClick={handleMarkAsCompleted}

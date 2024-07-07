@@ -11,7 +11,7 @@ const Appointments = ({ className, onSelectAppointment, appointments, completedA
             className={`relative p-4 rounded-xl cursor-pointer bg-white`}
             onClick={() => onSelectAppointment(appointment)}
           >
-            {completedAppointments.includes(appointment._id) && (
+            {appointment.isCompleted && (
               <div className="absolute px-2 py-1 text-xs font-semibold text-white bg-green-500 rounded top-2 right-2">
                 Completed
               </div>
