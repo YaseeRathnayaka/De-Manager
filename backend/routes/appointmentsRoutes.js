@@ -36,7 +36,7 @@ router.post('/dashboard', auth, async (req, res) => {
 // get all appointment
 router.get('/all', auth, async (req, res) => {
     try {
-        const appointments = await Appointment.find().select('-user -_id')
+        const appointments = await Appointment.find().select('-user')
         res.send(appointments)
     } catch (error) {
         res.status(500).send('Error fetching appointments.')

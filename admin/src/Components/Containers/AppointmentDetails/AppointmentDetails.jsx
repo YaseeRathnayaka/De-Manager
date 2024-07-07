@@ -27,7 +27,7 @@ const AppointmentDetails = ({ className, appointment, onCompleteAppointment }) =
 
   const handleMarkAsCompleted = () => {
     if (servicesCompleted.length === appointment.serviceTypes.length) {
-      onCompleteAppointment(appointment.id);
+      onCompleteAppointment(appointment._id);
       alert('Appointment marked as completed!');
     }
   };
@@ -36,8 +36,9 @@ const AppointmentDetails = ({ className, appointment, onCompleteAppointment }) =
     <div className={`mx-1 bg-custom-light-blue rounded-xl p-4 ${className}`}>
       <h2 className='text-xl font-semibold text-gray-800'>Appointment Details</h2>
       <div className="mt-4">
-        <h3 className='text-lg font-semibold text-gray-800'>{appointment.title}</h3>
-        <p className='text-sm text-gray-600'>{new Date(appointment.start).toLocaleString()}</p>
+        <h3 className='text-lg font-semibold text-gray-800'>{appointment.vehicleNumber}</h3>
+        <p className='text-sm text-gray-600'>{new Date(appointment.preferredDate).toLocaleDateString()}</p>
+        <p className='text-sm text-gray-600'>{appointment.timeSlot}</p>
         <button
           className="mt-2 text-sm text-blue-500 underline"
           onClick={() => alert(`Owner Details:\nName: ${appointment.customerName}\nEmail: ${appointment.email}\nMobile: ${appointment.mobile}\nAddress: ${appointment.address}\nNIC: ${appointment.NIC}\nVehicle Number: ${appointment.vehicleNumber}\nVehicle Model: ${appointment.vehicleModel}\nVehicle Year: ${appointment.vehicleYear}\nVehicle Type: ${appointment.vehicleType}`)}
