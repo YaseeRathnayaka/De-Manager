@@ -73,6 +73,10 @@ const Schedule = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const appointmentId = `APPT-${Date.now()}`;
+    const newAppointment = { ...form, appointmentId, start: new Date(form.preferredDate), end: new Date(form.preferredDate), title: form.customerName };
+    addAppointment(newAppointment);
+    console.log(newAppointment);
     try {
       const token = localStorage.getItem("token")
       const response = await axios.post('http://localhost:3000/api/appointment/dashboard', form, {
@@ -80,9 +84,8 @@ const Schedule = () => {
           "x-auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjhhMjc4NTU2NTc2NTQxMmNiMmFkNzEiLCJpYXQiOjE3MjAzMzA2MzN9.lm4edYXkkMAU5ffumtEeNAJLnrJfG-J0qu1h_QMZeds"
         }
       })
-      console.log("Created successfully")
     } catch (error) {
-      console.error('Error creating appointment:', error)
+      console.error(error)
     }
 
     // Show confirmation message
