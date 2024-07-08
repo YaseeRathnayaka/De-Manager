@@ -104,7 +104,7 @@ const Home = () => {
           )}
           {appointmentsSwitch && (
             <Appointments 
-              className={`h-full ${widths.others || widths}`}
+              className={`h-full overflow-y-auto ${widths.others || widths}`}
               appointments={todayEvents}
               onSelectAppointment={setSelectedAppointment}
               completedAppointments={completedAppointments}
