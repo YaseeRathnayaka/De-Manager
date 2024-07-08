@@ -7,8 +7,8 @@ import ListView from './Components/Pages/ListView/ListView';
 import Settings from './Components/Containers/Settings/Settings';
 import { AppointmentProvider } from './contexts/AppointmentContext'; 
 import { ThemeProvider } from './contexts/ThemeContext'; 
+import Requests from './Components/Pages/Requests/Requests';
 import Login from './Components/Pages/Login/Login';
-
 
 function App() {
   return (
@@ -23,7 +23,8 @@ function App() {
               <Route path="/calendar" element={<CalendarView />} />
               <Route path="/listview" element={<ListView />} />
               <Route path="/settings" element={<Settings />} />
-              <Route path="/login" element={<Login/>} />
+              <Route path="/requests" element={<Requests />} />
+              <Route path="/login" element={<Login />} />
             </Routes>
           </div>
         </AppointmentProvider>
