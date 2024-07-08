@@ -37,6 +37,7 @@ const CalendarView = () => {
   const [panelIsOpen, setPanelIsOpen] = useState(false);
   const [events, setEvents] = useState([]);
   const [showConfirmation, setShowConfirmation] = useState(false);
+  const [selectedAppointmentDetails, setSelectedAppointmentDetails] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -63,12 +64,14 @@ const CalendarView = () => {
 
   const handleSelectEvent = (event) => {
     setSelectedEvent(event);
+    setSelectedAppointmentDetails(event); // Set selected appointment details
     setPanelIsOpen(true);
   };
 
   const closePanel = () => {
     setPanelIsOpen(false);
     setSelectedEvent(null);
+    setSelectedAppointmentDetails(null); // Clear selected appointment details
   };
 
   const handleDeleteAppointment = () => {
@@ -133,6 +136,17 @@ const CalendarView = () => {
             <p>
               <strong>Service Types:</strong> {selectedEvent.serviceTypes.join(', ')}
             </p>
+            {/* Display additional details */}
+            <h3 className='mt-4 text-xl font-semibold text-gray-800'>Customer Details</h3>
+            <p><strong>Name:</strong> {selectedAppointmentDetails.customerName}</p>
+            <p><strong>Email:</strong> {selectedAppointmentDetails.email}</p>
+            <p><strong>Mobile:</strong> {selectedAppointmentDetails.mobile}</p>
+            <p><strong>Address:</strong> {selectedAppointmentDetails.address}</p>
+            <p><strong>NIC:</strong> {selectedAppointmentDetails.NIC}</p>
+            <p><strong>Vehicle Model:</strong> {selectedAppointmentDetails.vehicleModel}</p>
+            <p><strong>Vehicle Year:</strong> {selectedAppointmentDetails.vehicleYear}</p>
+            <p><strong>Vehicle Type:</strong> {selectedAppointmentDetails.vehicleType}</p>
+            
             <button
               onClick={handleDeleteAppointment}
               className='px-4 py-2 mt-4 mr-2 text-white bg-red-500 rounded'
