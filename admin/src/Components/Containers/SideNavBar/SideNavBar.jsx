@@ -45,6 +45,9 @@ const SideNavBar = ({ analyticsSwitch, setAnalyticsSwitch, appointmentsSwitch, s
   const SettingsNav = () => {
     navigate('/settings');
   };
+  const RequestNav = () => {
+    navigate('/requests');
+  };
 
   const handleOpen = (value) => {
     setOpen(open === value ? 0 : value);
@@ -187,7 +190,7 @@ const SideNavBar = ({ analyticsSwitch, setAnalyticsSwitch, appointmentsSwitch, s
           )}
         </Accordion>
         <hr className="my-2 border-blue-gray-50" />
-        <ListItem>
+        <ListItem onClick={RequestNav}>
           <ListItemPrefix>
             <InboxIcon className="w-5 h-5 mr-5" />
           </ListItemPrefix>
