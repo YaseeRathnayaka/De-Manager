@@ -36,7 +36,7 @@ router.post('/dashboard', auth, async (req, res) => {
 // get all appointment
 router.get('/all', auth, async (req, res) => {
     try {
-        const appointments = await Appointment.find().select('-user -_id')
+        const appointments = await Appointment.find().select('-user')
         res.send(appointments)
     } catch (error) {
         res.status(500).send('Error fetching appointments.')
@@ -46,7 +46,7 @@ router.get('/all', auth, async (req, res) => {
 // get an appointment
 router.get('/:id', auth, async (req, res) => {
     try {
-        const appointment = await Appointment.find({ _id: req.params.id }).select('-user -_id')
+        const appointment = await Appointment.find({ _id: req.params.id }).select('-user')
         res.send(appointment)
     } catch (error) {
         res.status(500).send('Error fetching appointments.')
@@ -55,20 +55,24 @@ router.get('/:id', auth, async (req, res) => {
 
 // update an appointment
 router.put('/:id', auth, async (req, res) => {
-    const { error } = validate(req.body)
-    if (error) return res.status(400).send(error.details[0].message)
-
     try {
         const appointment = await Appointment.findByIdAndUpdate(
             req.params.id,
             {
-                user: req.user._id,
-                vehicle: req.body.vehicle,
-                serviceType: req.body.serviceType,
-                tasks: req.body.tasks,
-                appointmentDate: req.body.appointmentDate,
-                appointmentTime: req.body.appointmentTime,
-                status: req.body.status
+                customerName: req.body.customerName,
+                email: req.body.email,
+                mobile: req.body.mobile,
+                address: req.body.address,
+                NIC: req.body.NIC,
+                vehicleNumber: req.body.vehicleNumber,
+                vehicleModel: req.body.vehicleModel,
+                vehicleYear: req.body.vehicleYear,
+                vehicleType: req.body.vehicleType,
+                preferredDate: req.body.preferredDate,
+                timeSlot: req.body.timeSlot,
+                status: req.body.status,
+                serviceTypes: req.body.serviceTypes,
+                isCompleted: req.body.isCompleted
             },
             { new: true }
         )

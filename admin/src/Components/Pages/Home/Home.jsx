@@ -7,6 +7,7 @@ import Appointments from '../../Containers/Appointments/Appoitments';
 import AppointmentDetails from '../../Containers/AppointmentDetails/AppointmentDetails';
 import events from '../../../assets/Data/EventsData'; 
 import { isSameDay } from 'date-fns';
+import axios from 'axios';
 
 const Home = () => {
   const [analyticsSwitch, setAnalyticsSwitch] = useState(true);
@@ -14,6 +15,10 @@ const Home = () => {
   const [detailsSwitch, setDetailsSwitch] = useState(true);
   const [selectedAppointment, setSelectedAppointment] = useState(null);
   const [completedAppointments, setCompletedAppointments] = useState([]);
+  const [data, setData] = useState([])
+  const [todayEvents, setTodayEvents] = useState([]);
+  const [totalCompletedVehicles, setTotalCompletedVehicles] = useState([])
+  const [todayTotalCompletedVehicles, setTodayTotalCompletedVehicles] = useState([])
 
   const calculateWidth = () => {
     const activeComponents = [analyticsSwitch, appointmentsSwitch, detailsSwitch].filter(Boolean).length;
@@ -28,8 +33,43 @@ const Home = () => {
   // Get today's date
   const today = new Date();
 
+  useEffect(() => {
+    const fetchdata = async () => {
+      try {
+        const token = localStorage.getItem("token")
+        const response = await axios.get('http://localhost:3000/api/appointment/all',{
+          headers: {
+            "x-auth-token" : token
+          }
+        })
+        console.log(response.data);
+        setData(response.data)
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    fetchdata()
+  },[])
+
+  useEffect(() => {
+    const today = new Date();
+    const filteredEvents = data.filter((event) => isSameDay(new Date(event.preferredDate), today));
+    setTodayEvents(filteredEvents);
+    console.log(todayEvents)
+  }, [data]);
+
+  useEffect(() => {
+    const totalCompletedVehicles = data.filter((appointment) => appointment.isCompleted && isSameDay(new Date(appointment.preferredDate), today)).length;
+    setTodayTotalCompletedVehicles(totalCompletedVehicles)
+  }, [data]);
+
+  useEffect(() => {
+    const totalCompletedVehicles = data.filter((appointment) => appointment.isCompleted).length;
+    setTotalCompletedVehicles(totalCompletedVehicles)
+  }, [data]);
+
   // Filter events to get today's appointments
-  const todayEvents = events.filter((event) => isSameDay(new Date(event.start), today));
+  // const todayEvents = events.filter((event) => isSameDay(new Date(event.start), today));
 
   // Handle completion of an appointment
   const handleCompleteAppointment = (appointmentId) => {
@@ -57,14 +97,14 @@ const Home = () => {
       />
       <div className="flex flex-col flex-1">
         <HeaderBar />
-        <TopCards totalAppointmentsToday={todayEvents.length} completedTodayCount={completedAppointments.length} />
+        <TopCards totalAppointmentsToday={todayEvents.length} completedTodayCount={todayTotalCompletedVehicles} totalVehicles={totalCompletedVehicles}/>
         <div className="flex flex-row mt-1 mb-5 ml-3 mr-3 h-4/5">
           {analyticsSwitch && (
             <Feedback className={`h-full ${widths.feedback || widths}`} />
           )}
           {appointmentsSwitch && (
             <Appointments 
-              className={`h-full ${widths.others || widths}`}
+              className={`h-full overflow-y-auto ${widths.others || widths}`}
               appointments={todayEvents}
               onSelectAppointment={setSelectedAppointment}
               completedAppointments={completedAppointments}
