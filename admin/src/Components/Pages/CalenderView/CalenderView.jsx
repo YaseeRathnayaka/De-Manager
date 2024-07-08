@@ -136,8 +136,7 @@ const CalendarView = () => {
             <p>
               <strong>Service Types:</strong> {selectedEvent.serviceTypes.join(', ')}
             </p>
-            {/* Display additional details */}
-            <h3 className='mt-4 text-xl font-semibold text-gray-800'>Customer Details</h3>
+
             <p><strong>Name:</strong> {selectedAppointmentDetails.customerName}</p>
             <p><strong>Email:</strong> {selectedAppointmentDetails.email}</p>
             <p><strong>Mobile:</strong> {selectedAppointmentDetails.mobile}</p>
