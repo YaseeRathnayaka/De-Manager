@@ -7,6 +7,7 @@ import ListView from './Components/Pages/ListView/ListView';
 import Settings from './Components/Containers/Settings/Settings';
 import { AppointmentProvider } from './contexts/AppointmentContext'; 
 import { ThemeProvider } from './contexts/ThemeContext'; // Adjust this import based on your project structure
+import Requests from './Components/Pages/Requests/Requests';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
               <Route path="/calendar" element={<CalendarView />} />
               <Route path="/listview" element={<ListView />} />
               <Route path="/settings" element={<Settings />} />
+              <Route path="/requests" element={<Requests />} />
             </Routes>
           </div>
         </AppointmentProvider>

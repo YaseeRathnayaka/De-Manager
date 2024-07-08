@@ -1,8 +1,10 @@
+// src/components/Schedule.js
 import React, { useState, useContext } from 'react';
 import SideNavBar from '../../Containers/SideNavBar/SideNavBar';
 import HeaderBar from '../../Containers/Header/Header';
-import { AppointmentContext } from '../../../contexts/AppointmentContext.jsx';
+import { AppointmentContext } from '../../../contexts/AppointmentContext';
 import axios from 'axios';
+import Requests from '../Requests/Requests';
 
 const Schedule = () => {
   const { addAppointment } = useContext(AppointmentContext);
@@ -81,16 +83,19 @@ const Schedule = () => {
       const token = localStorage.getItem("token")
       const response = await axios.post('http://localhost:3000/api/appointment/dashboard', form, {
         headers : {
-          "x-auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjhhMjc4NTU2NTc2NTQxMmNiMmFkNzEiLCJpYXQiOjE3MjAzMzA2MzN9.lm4edYXkkMAU5ffumtEeNAJLnrJfG-J0qu1h_QMZeds"
+          "x-auth-token": token
         }
       })
     } catch (error) {
       console.error(error)
     }
 
-    // Show confirmation message
     setShowConfirmation(true);
-    setTimeout(() => setShowConfirmation(false), 3000); // Hide after 3 seconds
+    setTimeout(() => setShowConfirmation(false), 3000);
+  };
+
+  const handleRequestSelect = (request) => {
+    setForm(request);
   };
 
   return (
@@ -99,6 +104,7 @@ const Schedule = () => {
       <div className="flex flex-col flex-1">
         <HeaderBar />
         <div className="p-6">
+          <Requests onRequestSelect={handleRequestSelect} />
           <h2 className="mb-6 text-2xl font-bold">Schedule an Appointment</h2>
           <form onSubmit={handleSubmit} className="grid grid-cols-1 gap-5 md:grid-cols-3">
             <div>
@@ -245,7 +251,6 @@ const Schedule = () => {
         </div>
       </div>
 
-      {/* Side Panel for Selecting Services */}
       {isServicePanelOpen && (
         <div className="fixed inset-0 z-50 flex justify-end bg-gray-900 bg-opacity-50">
           <div className="w-1/3 h-full p-4 bg-white">
@@ -262,9 +267,7 @@ const Schedule = () => {
                     className="form-checkbox"
                   />
                   <span className="ml-3">{service}</span>
-                  
                 </label>
-                
               ))}
             </div>
             <div className="mt-4">
@@ -295,7 +298,6 @@ const Schedule = () => {
         </div>
       )}
 
-      {/* Confirmation Message */}
       {showConfirmation && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-gray-900 bg-opacity-50">
           <div className="p-4 bg-white rounded-md shadow-md animate-bounce">
