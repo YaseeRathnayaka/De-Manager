@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import profile from './../../../assets/car.png';
+import profile from './../../../assets/Login2.jpg';
 
 
 const Login = () => {
@@ -21,16 +21,16 @@ const Login = () => {
 
   return (
     <div className="flex h-screen">
-       <div className='bg-gray-800 w-2/5 h-full'>
+       <div className='bg-gray-800 w-3/5 h-full'>
         <div className='bg-purple-100 w-full h-4/5 mt-20 ml-20'>
-        <img src={profile} alt="Profile" className="max-w-full h-72  ml-20 pt-20" />
+        <img src={profile} alt="Profile" className="w-auto h-full m-20" />
           </div>
       </div>
 
-      <div className='w-3/5 h-full '>
+      <div className='w-2/5 h-full '>
       <div className='bg-gray-300 w-11/12 h-4/5 mt-20 mr-40'>
-      <div className="w-3/5 flex flex-col justify-center items-center p-32 ml-48">
-                <h2 className="text-2xl font-bold mb-4">Login Your Account</h2>
+      <div className="w-3/5 flex flex-col  items-center p-16 ml-28">
+                <h2 className="text-2xl font-bold mb-2">Login Your Account</h2>
 
             <div className='mb-5'>
               <input
@@ -70,4 +70,4 @@ const Login = () => {
   );
 }
 
-export default Login;
+export default Login;
