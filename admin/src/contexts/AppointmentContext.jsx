@@ -10,18 +10,18 @@ export const AppointmentProvider = ({ children }) => {
       id: 1,
       customerName: 'John Doe',
       email: 'john@example.com',
-      mobile: '123456789',
+      mobile: '123-456-7890',
       address: '123 Main St',
       NIC: '123456789V',
-      vehicleNumber: 'AB-1234',
-      vehicleModel: 'Toyota Corolla',
-      vehicleYear: '2020',
+      vehicleNumber: 'ABC1234',
+      vehicleModel: 'Toyota Prius',
+      vehicleYear: '2015',
       vehicleType: 'Sedan',
-      preferredDate: '2023-12-01',
+      preferredDate: '2023-07-10',
       timeSlot: '08:00 AM - 10:00 AM',
       serviceTypes: ['Oil Change'],
     },
-    
+    // Add more mock requests here
   ]);
 
   const addAppointment = (appointment) => {
@@ -29,7 +29,7 @@ export const AppointmentProvider = ({ children }) => {
   };
 
   return (
-    <AppointmentContext.Provider value={{ appointments, addAppointment, requests }}>
+    <AppointmentContext.Provider value={{ appointments, requests, addAppointment }}>
       {children}
     </AppointmentContext.Provider>
   );

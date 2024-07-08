@@ -1,4 +1,4 @@
-// src/components/Schedule.js
+// src/components/Schedule/Schedule.js
 import React, { useState, useContext } from 'react';
 import SideNavBar from '../../Containers/SideNavBar/SideNavBar';
 import HeaderBar from '../../Containers/Header/Header';
