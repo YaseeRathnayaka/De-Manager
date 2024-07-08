@@ -8,10 +8,35 @@ import axios from 'axios';
 
 const localizer = momentLocalizer(moment);
 
+const ConfirmationModal = ({ message, onCancel, onConfirm }) => {
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-gray-800 bg-opacity-50">
+      <div className="max-w-md p-6 bg-white rounded-lg shadow-lg">
+        <p className="text-lg">{message}</p>
+        <div className="flex justify-end mt-4">
+          <button
+            className="px-4 py-2 mr-2 text-sm text-white bg-red-500 rounded-md"
+            onClick={onConfirm}
+          >
+            Confirm
+          </button>
+          <button
+            className="px-4 py-2 text-sm text-gray-700 bg-gray-200 rounded-md"
+            onClick={onCancel}
+          >
+            Cancel
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 const CalendarView = () => {
   const [selectedEvent, setSelectedEvent] = useState(null);
   const [panelIsOpen, setPanelIsOpen] = useState(false);
   const [events, setEvents] = useState([]);
+  const [showConfirmation, setShowConfirmation] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -46,7 +71,11 @@ const CalendarView = () => {
     setSelectedEvent(null);
   };
 
-  const handleDeleteAppointment = async () => {
+  const handleDeleteAppointment = () => {
+    setShowConfirmation(true);
+  };
+
+  const confirmDeleteAppointment = async () => {
     try {
       const token = localStorage.getItem('token');
       await axios.delete(`http://localhost:3000/api/appointment/${selectedEvent._id}`, {
@@ -60,7 +89,13 @@ const CalendarView = () => {
       closePanel();
     } catch (error) {
       console.error('Error deleting appointment:', error);
+    } finally {
+      setShowConfirmation(false);
     }
+  };
+
+  const cancelDeleteAppointment = () => {
+    setShowConfirmation(false);
   };
 
   return (
@@ -112,6 +147,14 @@ const CalendarView = () => {
             </button>
           </>
         </div>
+      )}
+
+      {showConfirmation && (
+        <ConfirmationModal
+          message="Are you sure you want to delete this appointment?"
+          onCancel={cancelDeleteAppointment}
+          onConfirm={confirmDeleteAppointment}
+        />
       )}
     </div>
   );
