@@ -1,8 +1,19 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const AppointmentDetails = ({ className, appointment, onCompleteAppointment }) => {
   const [servicesCompleted, setServicesCompleted] = useState([]);
+  const [data ,setData] = useState()
+
+  const toastOptions = {
+    position: "bottom-right",
+    autoClose: 8000,
+    pauseOnHover: true,
+    draggable: true,
+    theme: "dark",
+  };
 
   useEffect(() => {
     if (appointment) {
@@ -25,12 +36,12 @@ const AppointmentDetails = ({ className, appointment, onCompleteAppointment }) =
         : [...prev, service]
     );
   };
+  console.log("this" + appointment.serviceTypes)
 
   const handleMarkAsCompleted = async () => {
   try {
     if (servicesCompleted.length === appointment.serviceTypes.length) {
       onCompleteAppointment(appointment._id);
-      console.log(appointment._id)
       const token = localStorage.getItem("token");
       
       const response = await axios.put(`http://localhost:3000/api/appointment/${appointment._id}`, {
@@ -42,16 +53,16 @@ const AppointmentDetails = ({ className, appointment, onCompleteAppointment }) =
       });
 
       if (response.status === 200) {
-        alert('Appointment marked as completed!');
+        toast.success('Appointment marked as completed!', toastOptions);
       } else {
-        console.error('Error marking appointment as completed:', response);
+        toast.error('Error marking appointment as completed:', response, toastOptions);
       }
     } else {
-      alert('Not all services are completed.');
+      toast.error('Not all services are completed.', toastOptions);
     }
   } catch (error) {
     console.error('Error marking appointment as completed:', error);
-    alert('Failed to mark appointment as completed.');
+    toast.error('Failed to mark appointment as completed.', toastOptions);
   }
 };
 
@@ -92,6 +103,7 @@ const AppointmentDetails = ({ className, appointment, onCompleteAppointment }) =
           Mark as Completed
         </button>
       )}
+      <ToastContainer />
     </div>
   );
 };

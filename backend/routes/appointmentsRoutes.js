@@ -46,7 +46,7 @@ router.get('/all', auth, async (req, res) => {
 // get an appointment
 router.get('/:id', auth, async (req, res) => {
     try {
-        const appointment = await Appointment.find({ _id: req.params.id }).select('-user -_id')
+        const appointment = await Appointment.find({ _id: req.params.id }).select('-user')
         res.send(appointment)
     } catch (error) {
         res.status(500).send('Error fetching appointments.')
