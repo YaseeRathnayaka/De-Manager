@@ -21,16 +21,16 @@ const Login = () => {
 
   return (
     <div className="flex h-screen">
-       <div className='bg-gray-800 w-3/5 h-full'>
-        <div className='bg-purple-100 w-full h-4/5 mt-20 ml-20'>
+       <div className='w-3/5 h-full bg-gray-800'>
+        <div className='w-full mt-20 ml-20 bg-purple-100 h-4/5'>
         <img src={profile} alt="Profile" className="w-auto h-full " />
           </div>
       </div>
 
       <div className='w-2/5 h-full '>
-      <div className='bg-gray-300 w-11/12 h-4/5 mt-20 mr-40'>
-      <div className="w-3/5 flex flex-col justify-center items-center p-32 ml-48">
-                <h2 className="text-2xl font-bold mb-4">Login Your Account</h2>
+      <div className='w-11/12 mt-20 mr-40 bg-gray-300 h-4/5'>
+      <div className="flex flex-col items-center justify-center w-3/5 p-32 ml-28">
+                <h2 className="mb-4 text-2xl font-bold">Login Your Account</h2>
 
             <div className='mb-5'>
               <input
@@ -38,7 +38,7 @@ const Login = () => {
                placeholder='Email'
                value={email}
                onChange={handleEmailChange}
-               className='w-96 p-3 rounded-md border bg-purple-100 focus:outline-none focus:border-gray-800'/>
+               className='p-3 bg-purple-100 border rounded-md w-96 focus:outline-none focus:border-gray-800'/>
             </div>    
 
            <div className='mb-5'>
@@ -47,10 +47,10 @@ const Login = () => {
                placeholder='Password'
                value={email}
                onChange={handlePasswordChange}
-               className='p-3 rounded-md border bg-purple-100 focus:outline-none focus:border-gray-800 w-96'/>
+               className='p-3 bg-purple-100 border rounded-md focus:outline-none focus:border-gray-800 w-96'/>
            </div>  
 
-            <button onClick={handleLogin} className='w-96 p-3 bg-purple-800 text-white rounded-md mb-4 hover:bg-purple-900'>
+            <button onClick={handleLogin} className='p-3 mb-4 text-white bg-purple-800 rounded-md w-96 hover:bg-purple-900'>
              Login
              </button>
 
