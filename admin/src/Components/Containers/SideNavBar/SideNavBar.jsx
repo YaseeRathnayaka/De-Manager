@@ -48,6 +48,9 @@ const SideNavBar = ({ analyticsSwitch, setAnalyticsSwitch, appointmentsSwitch, s
   const RequestNav = () => {
     navigate('/requests');
   };
+  const ProfileNav = () => {
+    navigate('/profile');
+  };
 
   const handleOpen = (value) => {
     setOpen(open === value ? 0 : value);
@@ -211,7 +214,7 @@ const SideNavBar = ({ analyticsSwitch, setAnalyticsSwitch, appointmentsSwitch, s
             />
           </ListItemSuffix>
         </ListItem>
-        <ListItem>
+        <ListItem onClick={ProfileNav}>
           <ListItemPrefix>
             <UserCircleIcon className="w-5 h-5 mr-5" />
           </ListItemPrefix>
