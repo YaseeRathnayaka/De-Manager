@@ -103,8 +103,7 @@ const Schedule = () => {
         form,
         {
           headers: {
-            "x-auth-token":
-              "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjhiYjNiYjc1ZGQ3Y2VlZjIyOWU1NDAiLCJpYXQiOjE3MjA0MzE1NTd9.ruBfsM5fTLHP9-VSNano5s2Zs93belPrF2NkNiokpTY",
+            "x-auth-token": token
           },
         }
       );
