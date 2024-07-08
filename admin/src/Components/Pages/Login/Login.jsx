@@ -30,7 +30,7 @@ const Login = () => {
       <div className='w-2/5 h-full '>
       <div className='w-11/12 mt-20 mr-40 bg-gray-300 h-4/5'>
       <div className="flex flex-col items-center justify-center w-3/5 p-32 ml-28">
-                <h2 className="mb-4 text-2xl font-bold">Login Your Account</h2>
+                <h2 className="mb-4 mr-40 text-2xl font-bold">Login Your Account</h2>
 
             <div className='mb-5'>
               <input
@@ -55,7 +55,7 @@ const Login = () => {
              </button>
 
              <div className='text-center'>
-             <a href=" " className="text-purple-700 hover:underline">Forgot Password</a>
+             <a href=" " className="text-purple-700 ">Forgot Password</a>
              </div>
 
              
