@@ -99,7 +99,7 @@ function validateServiceAppointment(appointment) {
             "02:00 PM - 04:00 PM",
             "04:00 PM - 06:00 PM"
         ).required(),
-        serviceTypes: Joi.array().items(Joi.string()).required(),
+        serviceTypes: Joi.array().items(Joi.string()).min(1).required(),
         status: Joi.string().valid('Pending', 'Confirmed', 'Cancelled').default('Pending'),
         isCompleted: Joi.boolean().default(false)
     })

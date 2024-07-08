@@ -14,15 +14,9 @@ app.use('/api/auth/login', loginRoute)
 app.use('/api/appointment', appointmentsRoutes)
 
 // export NODE_ENV=development
-if (app.get('env') === 'development') {
-    mongoose.connect('mongodb://localhost:27017/Service-Station')
+    mongoose.connect("mongodb://localhost:27017/Service-Station")
         .then(() => console.log('MongoDB Compass Connected'))
         .catch((err) => console.log('MongoDB Compass connection error:', err))
-}else{
-    mongoose.connect(process.env.MONGODB_URI)
-        .then(() => console.log('MongoDB Atlas Connected'))
-        .catch((err) => console.log('MongoDB Atlas connection error:', err))
-}
 
 // Start the server
 const port = process.env.PORT || 3000;

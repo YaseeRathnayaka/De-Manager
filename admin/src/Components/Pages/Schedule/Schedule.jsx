@@ -1,28 +1,31 @@
 // src/components/Schedule/Schedule.js
-import React, { useState, useContext } from 'react';
-import SideNavBar from '../../Containers/SideNavBar/SideNavBar';
-import HeaderBar from '../../Containers/Header/Header';
-import { AppointmentContext } from '../../../contexts/AppointmentContext';
-import axios from 'axios';
-import Requests from '../Requests/Requests';
+import React, { useState, useContext } from "react";
+import SideNavBar from "../../Containers/SideNavBar/SideNavBar";
+import HeaderBar from "../../Containers/Header/Header";
+import { AppointmentContext } from "../../../contexts/AppointmentContext";
+import axios from "axios";
+import Requests from "../Requests/Requests";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 
 const Schedule = () => {
   const { addAppointment } = useContext(AppointmentContext);
   const [form, setForm] = useState({
-    customerName: '',
-    email: '',
-    mobile: '',
-    address: '',
-    NIC: '',
-    vehicleNumber: '',
-    vehicleModel: '',
-    vehicleYear: '',
-    vehicleType: '',
-    preferredDate: '',
-    timeSlot: '',
+    customerName: "",
+    email: "",
+    mobile: "",
+    address: "",
+    NIC: "",
+    vehicleNumber: "",
+    vehicleModel: "",
+    vehicleYear: "",
+    vehicleType: "",
+    preferredDate: "",
+    timeSlot: "",
     serviceTypes: [],
   });
-  const [newService, setNewService] = useState('');
+  const [newService, setNewService] = useState("");
   const [isServicePanelOpen, setIsServicePanelOpen] = useState(false);
   const [serviceOptions, setServiceOptions] = useState([
     "Oil Change",
@@ -39,6 +42,14 @@ const Schedule = () => {
     "02:00 PM - 04:00 PM",
     "04:00 PM - 06:00 PM",
   ];
+
+  const toastOptions = {
+    position: "bottom-right",
+    autoClose: 8000,
+    pauseOnHover: true,
+    draggable: true,
+    theme: "dark",
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -69,46 +80,65 @@ const Schedule = () => {
         ...form,
         serviceTypes: [...form.serviceTypes, newService],
       });
-      setNewService('');
+      setNewService("");
     }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const appointmentId = `APPT-${Date.now()}`;
-    const newAppointment = { ...form, appointmentId, start: new Date(form.preferredDate), end: new Date(form.preferredDate), title: form.customerName };
+    const newAppointment = {
+      ...form,
+      appointmentId,
+      start: new Date(form.preferredDate),
+      end: new Date(form.preferredDate),
+      title: form.customerName,
+    };
     addAppointment(newAppointment);
     console.log(newAppointment);
     try {
-      const token = localStorage.getItem("token")
-      const response = await axios.post('http://localhost:3000/api/appointment/dashboard', form, {
-        headers : {
-          "x-auth-token": token
+      const token = localStorage.getItem("token");
+      const response = await axios.post(
+        "http://localhost:3000/api/appointment/dashboard",
+        form,
+        {
+          headers: {
+            "x-auth-token":
+              "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjhiYjNiYjc1ZGQ3Y2VlZjIyOWU1NDAiLCJpYXQiOjE3MjA0MzE1NTd9.ruBfsM5fTLHP9-VSNano5s2Zs93belPrF2NkNiokpTY",
+          },
         }
-      })
+      );
+      setShowConfirmation(true);
+      setTimeout(() => setShowConfirmation(false), 3000);
     } catch (error) {
-      console.error(error)
-    }
-
-    setShowConfirmation(true);
-    setTimeout(() => setShowConfirmation(false), 3000);
-  };
+      if (error.response) {
+        toast.error(error.response.data, toastOptions);
+      } else{
+        toast.error(error.message, toastOptions);
+      }
+        
+    }}
 
   const handleRequestSelect = (request) => {
     setForm(request);
   };
 
   return (
-    <div className='relative flex flex-row overflow-hidden'>
+    <div className="relative flex flex-row overflow-hidden">
       <SideNavBar />
       <div className="flex flex-col flex-1">
         <HeaderBar />
         <div className="p-6">
           <Requests onRequestSelect={handleRequestSelect} />
           <h2 className="mb-6 text-2xl font-bold">Schedule an Appointment</h2>
-          <form onSubmit={handleSubmit} className="grid grid-cols-1 gap-5 md:grid-cols-3">
+          <form
+            onSubmit={handleSubmit}
+            className="grid grid-cols-1 gap-5 md:grid-cols-3"
+          >
             <div>
-              <label className="block text-sm font-medium text-gray-700">Customer Name</label>
+              <label className="block text-sm font-medium text-gray-700">
+                Customer Name
+              </label>
               <input
                 type="text"
                 name="customerName"
@@ -119,7 +149,9 @@ const Schedule = () => {
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700">Email</label>
+              <label className="block text-sm font-medium text-gray-700">
+                Email
+              </label>
               <input
                 type="email"
                 name="email"
@@ -130,7 +162,9 @@ const Schedule = () => {
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700">Mobile</label>
+              <label className="block text-sm font-medium text-gray-700">
+                Mobile
+              </label>
               <input
                 type="tel"
                 name="mobile"
@@ -141,7 +175,9 @@ const Schedule = () => {
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700">Address</label>
+              <label className="block text-sm font-medium text-gray-700">
+                Address
+              </label>
               <input
                 type="text"
                 name="address"
@@ -152,7 +188,9 @@ const Schedule = () => {
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700">NIC</label>
+              <label className="block text-sm font-medium text-gray-700">
+                NIC
+              </label>
               <input
                 type="text"
                 name="NIC"
@@ -163,7 +201,9 @@ const Schedule = () => {
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700">Vehicle Number</label>
+              <label className="block text-sm font-medium text-gray-700">
+                Vehicle Number
+              </label>
               <input
                 type="text"
                 name="vehicleNumber"
@@ -174,7 +214,9 @@ const Schedule = () => {
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700">Vehicle Model</label>
+              <label className="block text-sm font-medium text-gray-700">
+                Vehicle Model
+              </label>
               <input
                 type="text"
                 name="vehicleModel"
@@ -185,7 +227,9 @@ const Schedule = () => {
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700">Vehicle Year</label>
+              <label className="block text-sm font-medium text-gray-700">
+                Vehicle Year
+              </label>
               <input
                 type="number"
                 name="vehicleYear"
@@ -196,7 +240,9 @@ const Schedule = () => {
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700">Vehicle Type</label>
+              <label className="block text-sm font-medium text-gray-700">
+                Vehicle Type
+              </label>
               <input
                 type="text"
                 name="vehicleType"
@@ -207,7 +253,9 @@ const Schedule = () => {
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700">Preferred Date</label>
+              <label className="block text-sm font-medium text-gray-700">
+                Preferred Date
+              </label>
               <input
                 type="date"
                 name="preferredDate"
@@ -218,7 +266,9 @@ const Schedule = () => {
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700">Time Slot</label>
+              <label className="block text-sm font-medium text-gray-700">
+                Time Slot
+              </label>
               <select
                 name="timeSlot"
                 value={form.timeSlot}
@@ -226,9 +276,13 @@ const Schedule = () => {
                 className="block w-full p-2 mt-1 border border-gray-300 rounded-md"
                 required
               >
-                <option value="" disabled>Select a time slot</option>
-                {timeSlots.map(slot => (
-                  <option key={slot} value={slot}>{slot}</option>
+                <option value="" disabled>
+                  Select a time slot
+                </option>
+                {timeSlots.map((slot) => (
+                  <option key={slot} value={slot}>
+                    {slot}
+                  </option>
                 ))}
               </select>
             </div>
@@ -256,7 +310,7 @@ const Schedule = () => {
           <div className="w-1/3 h-full p-4 bg-white">
             <h3 className="mb-4 text-lg font-bold">Select Service Types</h3>
             <div className="grid md:grid-cols-2">
-              {serviceOptions.map(service => (
+              {serviceOptions.map((service) => (
                 <label key={service} className="">
                   <input
                     type="checkbox"
@@ -305,6 +359,7 @@ const Schedule = () => {
           </div>
         </div>
       )}
+      <ToastContainer />
     </div>
   );
 };
