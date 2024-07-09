@@ -1,25 +1,76 @@
-import React, { useState } from 'react';
-import HeaderBar from '../../Containers/Header/Header';
-import SideNavBar from '../../Containers/SideNavBar/SideNavBar';
+import React, { useEffect, useState } from "react";
+import HeaderBar from "../../Containers/Header/Header";
+import SideNavBar from "../../Containers/SideNavBar/SideNavBar";
+import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Profile = () => {
-  // Example state to hold profile information
   const [profile, setProfile] = useState({
-    name: 'John Doe',
-    age: 30,
-    photoUrl: 'path/to/default/photo.jpg',
-    // other profile details
+    name: "",
+    email: "",
+    password: "", // Assuming you have a password input in the form
   });
 
-  const [newPhoto, setNewPhoto] = useState(null); // State for new photo upload
+  const toastOptions = {
+    position: "bottom-right",
+    autoClose: 8000,
+    pauseOnHover: true,
+    draggable: true,
+    theme: "dark",
+  };
 
-  // Function to handle form submission
-  const handleSubmit = (e) => {
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const token = localStorage.getItem("token");
+        const response = await axios.get("http://localhost:3000/api/users/me", {
+          headers: {
+            "x-auth-token": token,
+          },
+        });
+        setProfile(response.data);
+      } catch (error) {
+        const errorMessage = error.response
+          ? error.response.data
+          : error.message;
+        toast.error(`Error fetching profile: ${errorMessage}`, toastOptions);
+      }
+    };
+    fetchData();
+  }, []);
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Implement logic to save updated profile data and photo (e.g., API call)
-    console.log('Profile updated:', profile);
-    console.log('New photo:', newPhoto); // Handle new photo upload separately
-    // Optionally, show success message or update UI
+
+    // Create a payload with only the fields that can be updated
+    const updatePayload = {
+      name: profile.name,
+      email: profile.email,
+    };
+
+    // Only add password if it is not empty
+    if (profile.password) {
+      updatePayload.password = profile.password;
+    }
+
+    try {
+      const token = localStorage.getItem("token");
+      await axios.put(
+        "http://localhost:3000/api/users",
+        updatePayload, // Only send the fields that are allowed for update
+        {
+          headers: {
+            "x-auth-token": token,
+            "Content-Type": "application/json", // Ensure correct content type
+          },
+        }
+      );
+      toast.success("Profile Updated Successfully", toastOptions);
+    } catch (error) {
+      const errorMessage = error.response ? error.response.data : error.message;
+      toast.error(`Error fetching profile: ${errorMessage}`, toastOptions);
+    }
   };
 
   // Function to handle input changes
@@ -27,18 +78,12 @@ const Profile = () => {
     const { name, value } = e.target;
     setProfile({
       ...profile,
-      [name]: value
+      [name]: value,
     });
   };
 
-  // Function to handle photo upload
-  const handlePhotoChange = (e) => {
-    const file = e.target.files[0];
-    setNewPhoto(file);
-  };
-
   return (
-    <div className='flex flex-row h-screen overflow-hidden'>
+    <div className="flex flex-row h-screen overflow-hidden">
       <SideNavBar />
       <div className="flex flex-col flex-1">
         <HeaderBar />
@@ -56,34 +101,16 @@ const Profile = () => {
                 className="w-full px-3 py-2 border"
               />
             </div>
-            {/* Age */}
+            {/* Email */}
             <div>
-              <label className="block mb-1">Age</label>
+              <label className="block mb-1">Email</label>
               <input
-                type="number"
-                name="age"
-                value={profile.age}
+                type="email"
+                name="email"
+                value={profile.email}
                 onChange={handleChange}
                 className="w-full px-3 py-2 border"
-              />
-            </div>
-            {/* Current Photo Preview */}
-            <div className="flex items-center space-x-4">
-              <img
-                src={profile.photoUrl}
-                alt="Current Profile"
-                className="object-cover w-16 h-16 rounded-full"
-              />
-              <label className="block mb-1">Current Photo</label>
-            </div>
-            {/* New Photo Upload */}
-            <div>
-              <label className="block mb-1">Upload New Photo</label>
-              <input
-                type="file"
-                accept="image/*"
-                onChange={handlePhotoChange}
-                className="w-full px-3 py-2 border"
+                readOnly // Assuming email is not editable
               />
             </div>
             {/* Password Change */}
@@ -92,18 +119,23 @@ const Profile = () => {
               <input
                 type="password"
                 name="password"
-                // Add onChange and value if you manage password state
+                value={profile.password}
+                onChange={handleChange}
                 placeholder="Enter new password"
                 className="w-full px-3 py-2 border"
               />
             </div>
             {/* Save Button */}
-            <button type="submit" className="px-4 py-2 mt-4 text-white bg-blue-500 rounded">
+            <button
+              type="submit"
+              className="px-4 py-2 mt-4 text-white bg-blue-500 rounded"
+            >
               Save Changes
             </button>
           </form>
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 };
