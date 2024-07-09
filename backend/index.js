@@ -16,7 +16,7 @@ app.use('/api/auth/login', loginRoute)
 app.use('/api/appointment', appointmentsRoutes)
 
 // export NODE_ENV=development
-    mongoose.connect("mongodb://localhost:27017/Service-Station")
+    mongoose.connect("mongodb+srv://raveeshadilanka1204:Raveesha@cluster0.ayy3eww.mongodb.net/Service_Station")
         .then(() => console.log('MongoDB Compass Connected'))
         .catch((err) => console.log('MongoDB Compass connection error:', err))
 
