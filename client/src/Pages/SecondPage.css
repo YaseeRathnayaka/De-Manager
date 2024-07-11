@@ -1,14 +1,18 @@
-.second-page {
-    background-color: white;
-    margin-top: 2rem;
+.second {
+    height: 100rem;
 }
 
-.PageTitle {
+.second-page1 {
+    background-color: white;
+    margin-top: 2rem;
+    height: 35rem;
+}
+
+.PageTitle-01 {
     font-size: 2rem;
     font-weight: 500;
     margin: 1rem 1rem;
     color: black;
-
 }
 
 .sepgs {
@@ -33,16 +37,6 @@
     color: black;
 }
 
-.btn .hover{
-    margin: 2rem 0;
-    padding: 0.5rem 2rem;
-    border: none;
-    border-radius: 2rem;
-    background: black;
-    color: white;
-    gap: 20px;
-}
-
 .pageBtn {
     margin: 2rem 0;
     padding: 0.5rem 3rem;
@@ -52,41 +46,76 @@
     font-size: 1.5rem;
 }
 
-.sec2 {
-    margin-top: 1rem;
-    margin-bottom: 2.5rem;
-}
+.second-page2 {
+    background: url('/image6.jpg') no-repeat;
+    background-size: cover;
+    height: 85vh;
+} 
 
-.bg img {
-    width: 1500px;
-    height: 470px;
-    opacity: 30%;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-}
-
-.PageTitle-01 {
+.PageTitle-02 {
     font-size: 2rem;
     font-weight: 500;
     margin: 1rem; 
 }
 
-
 .sepgs-01 {
     display: flex;
     flex-direction: row;
-    gap: 0.5rem;
-    margin-top: -29.75rem;
+    gap: 1rem;
+    margin-top: 2rem;
 }
 
-.sepgs-01 img {
+.btn .hover{
+    margin: 2rem 0;
+    padding: 0.5rem 2rem;
+    border: 1rem;
+    border-radius: 2rem;
+    background: black;
+    color: white;
+    gap: 20px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* .bg img {
+    width: 1500px;
+    height: 400px;
+    opacity: 100%;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+} */
+
+
+/* .sepgs-01 img {
     margin: 2rem 1.2rem;
     height: 250px;
     width: 315px;
     border-radius: 1rem;
-}
+} */
 
-.projectContent {
+/* .projectContent {
     gap: 20px;
     margin: 0.8rem;
     padding: 1.5rem 2rem;
@@ -96,7 +125,7 @@
     font-weight: 500;
     width: 20%;
     text-align: left;
-    /* margin-left: 0%;
-    margin-right: 0%; */
-}
+    margin-left: 0%;
+    margin-right: 0%; 
+}   */
 
