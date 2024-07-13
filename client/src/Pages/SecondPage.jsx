@@ -42,7 +42,6 @@ const SecondPage = () => {
            <p>Offers a wide range of services from oil changes to major repairs.</p>
            <p>Equipped with state-of-the-art tools and equipment.</p>
            <p>Provides preventative maintenance to avoid future issues.</p>
-           <p>Ensures that all work meets or exceeds industry standards.</p>
            </button>
         
 
@@ -51,7 +50,6 @@ const SecondPage = () => {
            <p>Friendly and approachable staff ready to assist.</p>
            <p>Clear communication regarding repair needs and costs.</p>
            <p>Comfortable waiting area with amenities for customers.</p>
-           <p>Commitment to timely and efficient service delivery.</p>
            </button>
       
 

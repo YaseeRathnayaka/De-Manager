@@ -1,16 +1,16 @@
 .second {
-    height: 100rem;
+    height: 105rem;
 }
 
 .second-page1 {
     background-color: white;
     margin-top: 2rem;
-    height: 35rem;
+    height: 40rem;
 }
 
 .PageTitle-01 {
-    font-size: 2rem;
-    font-weight: 500;
+    font-size: 3rem;
+    font-weight: 700;
     margin: 1rem 1rem;
     color: black;
 }
@@ -23,13 +23,13 @@
 }
 
 .sepgImg img{
-    height: 400px;
-    width: 650px;
+    height: 500px;
+    width: 850px;
     border-radius: 0.5rem;
 }
 
 .sepgContent {
-    font-size: 20px;
+    font-size: 25px;
     font-weight: 400;
 }
 
@@ -49,30 +49,44 @@
 .second-page2 {
     background: url('/image6.jpg') no-repeat;
     background-size: cover;
-    height: 85vh;
+    height: 35rem;
 } 
 
 .PageTitle-02 {
-    font-size: 2rem;
+    font-size: 3rem;
     font-weight: 500;
     margin: 1rem; 
+    color: black;
+    font-weight: 700;
 }
 
 .sepgs-01 {
     display: flex;
     flex-direction: row;
-    gap: 1rem;
-    margin-top: 2rem;
+    gap: 2.5rem;
+    margin-top: 2.5rem ;
 }
 
 .btn .hover{
-    margin: 2rem 0;
+    margin: 2rem ;
     padding: 0.5rem 2rem;
     border: 1rem;
     border-radius: 2rem;
     background: black;
-    color: white;
-    gap: 20px;
+    color: white;   
+}
+
+.btn p {
+    text-align: left;
+    margin: 1rem 2rem;
+    font-size: 1.3rem;
+}
+
+.btn h2 {
+    color: rgb(195, 218, 162);
+    text-align: left;
+    margin: 0rem 2rem;
+    font-size: 2rem;
 }
 
 
