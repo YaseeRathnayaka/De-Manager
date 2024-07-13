@@ -1,28 +1,24 @@
 const express = require('express')
 const mongoose = require('mongoose')
-const users = require('./routes/users')
-const auth = require('./routes/login')
+const userRoutes = require('./routes/userRoutes')
 const cors = require('cors')
-const appointment = require('./routes/appointments')
+const appointmentsRoutes = require('./routes/appointmentsRoutes')
+const loginRoute = require('./routes/loginRoute')
 
 const app = express();
-app.use(cors())
+app.use(cors({
+    exposedHeaders: ['x-auth-token']
+}));
 app.use(express.json())
 
-app.use('/users', users)
-app.use('/auth', auth)
-app.use('/appointment', appointment)
+app.use('/api/users', userRoutes)
+app.use('/api/auth/login', loginRoute)
+app.use('/api/appointment', appointmentsRoutes)
 
 // export NODE_ENV=development
-if (app.get('env') === 'development') {
-    mongoose.connect('mongodb://localhost:27017/Service-Station')
+    mongoose.connect("mongodb+srv://raveeshadilanka1204:Raveesha@cluster0.ayy3eww.mongodb.net/Service_Station")
         .then(() => console.log('MongoDB Compass Connected'))
         .catch((err) => console.log('MongoDB Compass connection error:', err))
-}else{
-    mongoose.connect(process.env.MONGODB_URI)
-        .then(() => console.log('MongoDB Atlas Connected'))
-        .catch((err) => console.log('MongoDB Atlas connection error:', err))
-}
 
 // Start the server
 const port = process.env.PORT || 3000;

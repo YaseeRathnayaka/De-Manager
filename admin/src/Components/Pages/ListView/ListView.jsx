@@ -1,10 +1,36 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { format, isToday } from 'date-fns';
 import HeaderBar from '../../Containers/Header/Header';
 import SideNavBar from '../../Containers/SideNavBar/SideNavBar';
 import events from '../../../assets/Data/EventsData';
+import axios from 'axios';
+import moment from 'moment';
 
 const ListView = () => {
+  const [events, setEvents] = useState([])
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const token = localStorage.getItem('token');
+        const response = await axios.get('http://localhost:3000/api/appointment/all', {
+          headers: {
+            'x-auth-token': token,
+          },
+        });
+        const appointments = response.data.map((appointment) => ({
+          title: appointment.vehicleNumber,
+          start: new Date(appointment.preferredDate),
+          end: new Date(moment(appointment.preferredDate).add(2, 'hours')),
+          ...appointment,
+        }));
+        setEvents(appointments);
+      } catch (error) {
+        console.error('Error fetching appointments:', error);
+      }
+    };
+    fetchData();
+  }, []);
 
   const today = new Date();
   // Filter events to only show those happening today
@@ -21,7 +47,7 @@ const ListView = () => {
             <p>No events scheduled for today.</p>
           ) : (
             todayEvents.map(event => (
-              <div key={event.id} className="p-4 mb-4 bg-gray-100 rounded-lg shadow">
+              <div key={event._id} className="p-4 mb-4 bg-gray-100 rounded-lg shadow">
                 <h3 className="text-xl">{event.title}</h3>
                 <p><strong>Start:</strong> {format(new Date(event.start), 'PPpp')}</p>
                 <p><strong>End:</strong> {format(new Date(event.end), 'PPpp')}</p>

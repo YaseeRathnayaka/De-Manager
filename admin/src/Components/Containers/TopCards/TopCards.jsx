@@ -4,12 +4,11 @@ import totalcar from '../../../assets/car.png';
 import Appointmentpic from '../../../assets/car-service.png';
 import carpic from '../../../assets/car.png';
 
-const TopCards = ({ totalAppointmentsToday, completedTodayCount }) => {
-  const totalVehicles = 120; // Replace with your actual data fetching logic
+const TopCards = ({ totalAppointmentsToday, completedTodayCount, totalVehicles }) => {
 
   // Get today's date
   const today = new Date();
-  const todayFormatted = format(today, 'MMMM dd, yyyy'); // e.g., "June 21, 2024"
+  const todayFormatted = format(today, 'MMMM dd, yyyy'); 
 
   return (
     <div className="flex justify-between mx-4 my-4">
