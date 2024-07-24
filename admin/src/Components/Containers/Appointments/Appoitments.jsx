@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Appointments = ({ className, onSelectAppointment, appointments, completedAppointments }) => {
+const Appointments = ({ className, onSelectAppointment, appointments }) => {
   return (
     <div className={`mx-1 bg-custom-light-blue rounded-xl p-4 ${className}`}>
       <h2 className='text-xl font-semibold text-gray-800'>Appointments</h2>
