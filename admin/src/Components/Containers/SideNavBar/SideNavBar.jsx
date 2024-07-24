@@ -53,6 +53,12 @@ const SideNavBar = ({ analyticsSwitch, setAnalyticsSwitch, appointmentsSwitch, s
     setOpen(open === value ? 0 : value);
   };
 
+
+  const handleLogout = () =>{
+    localStorage.removeItem("token")
+    navigate('/login')
+  }
+
   return (
     <Card className="sidenav h-[calc(100vh-2rem)] w-full max-w-[20rem] p-4 shadow-xl shadow-blue-gray-900/5 bg-custom-blue mt-3 ml-3 rounded-xl">
       <div className="p-4 mb-2">
@@ -221,8 +227,11 @@ const SideNavBar = ({ analyticsSwitch, setAnalyticsSwitch, appointmentsSwitch, s
           <ListItemPrefix>
             <PowerIcon className="w-5 h-5 mr-5" />
           </ListItemPrefix>
+          <button onClick={handleLogout}>
           Log Out
-        </ListItem>
+          </button>
+          
+        </ListItem >
       </List>
       <div className="mt-auto">
         <DigitalClock />

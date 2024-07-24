@@ -4,8 +4,7 @@ import totalcar from '../../../assets/car.png';
 import Appointmentpic from '../../../assets/car-service.png';
 import carpic from '../../../assets/car.png';
 
-const TopCards = ({ totalAppointmentsToday, completedTodayCount }) => {
-  const totalVehicles = 120; 
+const TopCards = ({ totalAppointmentsToday, completedTodayCount, totalVehicles }) => {
 
   // Get today's date
   const today = new Date();
